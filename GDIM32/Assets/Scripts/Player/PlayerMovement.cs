@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private FOV Fov;
     public int m_PlayerNumber = 1;
     public float m_Speed = 12f;
     public float m_TurnSpeed = 180f;
+    public Transform currentFacing;      // Current Direction that Player is facing
 
     private string m_MovementAxisName;
     private string m_TurnAxisName;
@@ -40,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Vector3 targetPosition = currentFacing.position;
+        Vector3 aimDir = (targetPosition - transform.position).normalized;
+        Fov.SetAimDirection(aimDir);
+        Fov.SetOrigin(transform.position);
+
         getPlayerInput();
     }
 
