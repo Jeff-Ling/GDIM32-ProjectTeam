@@ -41,7 +41,11 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody shellInstance = 
             Instantiate(m_bullet, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
 
+        // set the velocity
         shellInstance.velocity = bulletSpeed * m_FireTransform.forward;
+
+        // set the tag
+        shellInstance.tag = this.tag;
 
         // Record the time
         fire_lastTime = Time.time;
