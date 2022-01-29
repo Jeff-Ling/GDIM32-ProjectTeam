@@ -37,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
     {
         m_MovementAxisName = "Vertical" + m_PlayerNumber;
         m_TurnAxisName = "Horizontal" + m_PlayerNumber;
+
+        Vector3 targetPosition = currentFacing.position;
+        Vector3 aimDir = (targetPosition - transform.position).normalized;
+        Fov.SetAimDirection(aimDir);
+        Fov.SetOrigin(transform.position);
     }
 
     // Update is called once per frame
