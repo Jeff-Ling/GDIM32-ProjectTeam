@@ -17,12 +17,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag != this.tag)
         {
-            if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name == "Enemy")
             {
                 PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
                 playerHealth.TakeDamage(Damage);
             }
+
+            Destroy(gameObject);
         }
     }
 }
