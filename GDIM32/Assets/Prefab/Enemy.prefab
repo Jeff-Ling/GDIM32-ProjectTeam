@@ -57,9 +57,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.3803992, y: 3.4229064}
-      - {x: 2.4495146, y: -0.20106897}
-      - {x: 2.5577414, y: -3.8270233}
+    - - {x: 2.0297685, y: 3.4229064}
+      - {x: 1.971382, y: -0.1373179}
+      - {x: 2.047733, y: -3.8907743}
       - {x: 19.37023, y: -7.3909006}
       - {x: 19.412361, y: 7.2490964}
 --- !u!114 &7726946173345088076
@@ -102,7 +102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726946174156425077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1, y: -0.47, z: 0}
+  m_LocalPosition: {x: 5.1, y: -0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7726946175392093688}
@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 7726946175392093694}
   - component: {fileID: 7726946175392093695}
   - component: {fileID: 7726946175392093693}
+  - component: {fileID: 7726946173958574213}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -257,3 +258,20 @@ MonoBehaviour:
   Speed: 50
   TurnSpeed: 90
   BehaviourBreak: 1
+--- !u!114 &7726946173958574213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726946175392093690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a780908a83eeb4da7967e234324eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHealth: 100
+  m_Slider: {fileID: 0}
+  m_FillImage: {fileID: 0}
+  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}

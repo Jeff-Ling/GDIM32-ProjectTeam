@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\Camera\CameraControl.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_TimeScaleManager.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\Button_UI.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
     <Compile Include="Assets\Imported\_\Base\BaseScripts\FlyingBody.cs" />
     <Compile Include="Assets\Imported\_\Base\BaseScripts\CharacterWaypointsHandler.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\World_Mesh.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\Imported\_\Stuff\Scripts\V_UnitSkeleton_Composite_Weapon.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\World_Bar.cs" />
     <Compile Include="Assets\Imported\_\Base\BaseScripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Imported\_\Base\BaseScripts\CharacterAimHandler.cs" />
     <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathRoute.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransform.cs" />
@@ -123,16 +125,14 @@
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\UI_Bar.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\V_UnitSkeleton_Composite_Walker.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransform_LateUpdate.cs" />
-    <Compile Include="Assets\Scripts\Player\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\MonoBehaviours\ComponentActions.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\UI_BarMultiple.cs" />
-    <Compile Include="Assets\Scripts\Player\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\CMDebug.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransformBody.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\Shoot_Flash.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imported\_\Stuff\CodeMonkey\README.txt" />
