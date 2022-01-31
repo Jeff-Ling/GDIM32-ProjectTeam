@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire_break: 1
-  bullet: {fileID: 0}
+  bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
   FireTransform: {fileID: 7726946174156425076}
   bulletSpeed: 10
 --- !u!1 &7726946174156425077

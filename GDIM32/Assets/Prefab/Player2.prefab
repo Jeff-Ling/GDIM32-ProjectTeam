@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNumber: 2
-  m_bullet: {fileID: 0}
+  m_bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
   m_FireTransform: {fileID: 1230043718037666327}
   bulletSpeed: 10
   fire_break: 3

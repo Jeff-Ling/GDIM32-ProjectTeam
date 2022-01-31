@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     public float fire_break = 3.0f;
-    public Rigidbody bullet;
+    public Rigidbody2D bullet;
     public Transform FireTransform;
     public float bulletSpeed = 10.0f;
 
@@ -35,8 +35,8 @@ public class EnemyShooting : MonoBehaviour
 
     private void Fire()
     {
-        Rigidbody shellInstance =
-            Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody;
+        Rigidbody2D shellInstance =
+            Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody2D;
 
         // set the velocity
         shellInstance.velocity = bulletSpeed * FireTransform.forward;
