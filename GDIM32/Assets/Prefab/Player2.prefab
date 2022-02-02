@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230043718037666324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 1.16, z: 0}
+  m_LocalPosition: {x: 1.19, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1230043718979084250}
@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1230043718979084250
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03272724, y: -0.3109057}
+  m_Offset: {x: 0.03272724, y: -0.112149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5125538, y: 0.5389029}
@@ -194,7 +194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.669073, y: 3.0290685}
+  m_Size: {x: 2.669073, y: 2.631555}
   m_EdgeRadius: 0
 --- !u!114 &1230043718979084254
 MonoBehaviour:
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
   m_FireTransform: {fileID: 1230043718037666327}
   bulletSpeed: 10
-  fire_break: 3
+  fire_break: 0.5
 --- !u!114 &1230043718979084252
 MonoBehaviour:
   m_ObjectHideFlags: 0

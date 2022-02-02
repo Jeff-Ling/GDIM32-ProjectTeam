@@ -396,10 +396,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 5266305465233313864, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313865, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: Fov
       value: 
@@ -448,10 +444,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 5266305465233313870, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
-      propertyPath: fire_break
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
 --- !u!1001 &1230043718141735085
@@ -467,11 +459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.z

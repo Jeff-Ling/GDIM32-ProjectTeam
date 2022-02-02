@@ -50,6 +50,11 @@ public class EnemyMovement : MonoBehaviour
             Move();
             Turn();
         }
+        else
+        {
+            MovementInputValue = 0f;
+            rb.velocity = transform.right * MovementInputValue * Speed * Time.deltaTime;
+        }
     }
 
     private void getRandomInput()

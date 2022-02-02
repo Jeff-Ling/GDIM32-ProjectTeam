@@ -14,11 +14,12 @@ public class EnemyShooting : MonoBehaviour
     private bool AbleToFire;
     private float fire_lastTime;
     private float fire_curTime;
+    private float damping = 2f;
 
     private void Start()
     {
-        tf = gameObject.GetComponentInParent<Transform>();
-        enemyMovement = gameObject.GetComponentInParent<EnemyMovement>();
+        tf = transform.parent.GetComponent<Transform>();
+        enemyMovement = transform.parent.GetComponent<EnemyMovement>(); 
     }
 
     private void Update()
@@ -39,7 +40,7 @@ public class EnemyShooting : MonoBehaviour
             Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody2D;
 
         // set the velocity
-        shellInstance.velocity = bulletSpeed * FireTransform.forward;
+        shellInstance.velocity = bulletSpeed * FireTransform.right;
 
         // set the tag
         shellInstance.tag = this.tag;
@@ -48,6 +49,7 @@ public class EnemyShooting : MonoBehaviour
         fire_lastTime = Time.time;
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -55,7 +57,36 @@ public class EnemyShooting : MonoBehaviour
         if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
         {
             // Look At the player and Fire
-            tf.LookAt(collision.transform);
+            var lookPos = collision.transform.position - tf.position;
+            lookPos.y = 0;
+            Debug.Log(lookPos);
+            var rotation = Quaternion.LookRotation(lookPos);
+            Debug.Log(rotation);
+            tf.rotation = Quaternion.Slerp(tf.rotation, rotation, Time.deltaTime * damping);
+
+            AbleToFire = true;
+
+            // Stop Moving
+            enemyMovement.StopMove();
+        }
+    }
+    */
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Enemy see Players
+        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        {
+            // Look At the player and Fire
+            Vector3 targ = collision.transform.position;
+            targ.z = 0f;
+
+            Vector3 objectPos = tf.position;
+            targ.x = targ.x - objectPos.x;
+            targ.y = targ.y - objectPos.y;
+
+            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+            tf.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
             AbleToFire = true;
 
             // Stop Moving
