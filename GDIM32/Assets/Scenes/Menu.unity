@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 1259482208}
   - component: {fileID: 1259482207}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: textQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 1283724402}
   - component: {fileID: 1283724401}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: textPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
