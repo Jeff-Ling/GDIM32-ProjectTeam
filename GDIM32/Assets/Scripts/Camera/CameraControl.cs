@@ -29,8 +29,17 @@ public class CameraControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        Zoom();
+        if (m_Targets.Length == 1)
+        {
+            Vector3 targ = m_Targets[0].transform.position;
+            targ.y -= 9;
+            transform.position = targ;
+        }
+        else
+        {
+            Move();
+            Zoom();
+        }
     }
 
 
