@@ -69,6 +69,7 @@
      <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathRoute.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransform.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IObjectActiveLogic.cs" />
+     <Compile Include="Assets\mainMenu.cs" />
      <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionUpdater.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IObjectTransformBody.cs" />
      <Compile Include="Assets\Imported\_\Stuff\Scripts\GameAssets.cs" />
@@ -112,7 +113,6 @@
      <Compile Include="Assets\Imported\_\Base\BaseScripts\PlayerPositionMovement.cs" />
      <Compile Include="Assets\Imported\FieldOfView\Scripts\FieldOfView.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IHasWorldPosition.cs" />
-     <Compile Include="Assets\mainMenu.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_Main.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Imported\_\Stuff\Scripts\AnimatedWalker.cs" />
