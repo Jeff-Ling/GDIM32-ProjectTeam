@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private bool checkPlayerAvailability()
     {
-        return (player1 == null && player2 == null);
+        return (player1 == null || player2 == null);
     }
 
     private bool checkEnemyAvailability()

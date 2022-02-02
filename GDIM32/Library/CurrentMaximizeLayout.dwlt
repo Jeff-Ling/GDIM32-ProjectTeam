@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 1605
+  controlID: 7042
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 1507
+  controlID: 7018
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -204,9 +204,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 32.17734, y: 13.186691, z: -114.051}
+    m_Target: {x: 4.192277, y: 19.74882, z: -134.52176}
     speed: 2
-    m_Value: {x: 32.17734, y: 13.186691, z: -114.051}
+    m_Value: {x: 4.192277, y: 19.74882, z: -134.52176}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -257,9 +257,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 48.401264
+    m_Target: 15.185645
     speed: 2
-    m_Value: 48.401264
+    m_Value: 15.185645
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -516,8 +516,8 @@ MonoBehaviour:
     y: 735
     width: 1312
     height: 572
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 1606
+  controlID: 7043
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -604,7 +604,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: acedfffff2edffff6aeeffffa4eeffffbeeeffffdaeeffff20f1ffff427000006071000074720000
+      m_ExpandedIDs: acedfffff2edffff6aeeffffa4eeffffbeeeffffdaeeffff20f1ffff42700000607100006472000074720000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -693,21 +693,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Camera
+    - Assets/Prefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Camera
+  - Assets/Prefab
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\software\GitHub\GDIM32-ProjectTeam\GDIM32
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 546e0000
-    m_LastClickedID: 28244
+    m_SelectedIDs: 4e6e0000
+    m_LastClickedID: 28238
     m_ExpandedIDs: 00000000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e0000286e00002a6e00002c6e00002e6e0000306e0000326e0000346e0000366e0000386e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -761,9 +761,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 5e720000
-    m_LastClickedInstanceID: 29278
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 5c720000
+    m_LastClickedInstanceID: 29276
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 29278
+  m_LastInspectedObjectInstanceID: 29276
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_LockTracker:

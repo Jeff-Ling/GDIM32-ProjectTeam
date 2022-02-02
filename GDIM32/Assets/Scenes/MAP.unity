@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 5266305465233313864, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313865, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: Fov
       value: 
@@ -284,6 +288,14 @@ PrefabInstance:
     - target: {fileID: 5266305465233313865, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: m_Speed
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266305465233313866, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266305465233313866, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1834426171
       objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313867, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: m_RootOrder
@@ -303,11 +315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313867, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.5
+      value: 18.57
       objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313867, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31
+      value: 14.17
       objectReference: {fileID: 0}
     - target: {fileID: 5266305465233313867, guid: fd0387de5ff85f14f975d940454f5109, type: 3}
       propertyPath: m_LocalPosition.z
@@ -422,7 +434,7 @@ GameObject:
   - component: {fileID: 1493891556}
   - component: {fileID: 1493891558}
   - component: {fileID: 1493891557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,8 +492,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -556190103
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 4.465, y: 3.8846154, z: 0}
@@ -5324,11 +5336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.95
+      value: -3.76
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.66
+      value: 12.75
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5361,6 +5373,14 @@ PrefabInstance:
     - target: {fileID: 1230043718979084250, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230043718979084251, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230043718979084251, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1834426171
       objectReference: {fileID: 0}
     - target: {fileID: 1230043718979084253, guid: a719e3cfa7bae534fad73c30e02c3da3, type: 3}
       propertyPath: m_Name
@@ -5409,7 +5429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026100681}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd407ddf636f82b409179fa2d0967dba, type: 3}
   m_Name: 
