@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This scirpt is used to control camera. To allow camera move with player
+// This is actually imported from Tank Turtorial.
+
+
 public class CameraControl : MonoBehaviour
 {
     public float m_DampTime = 0.2f;
     public float m_ScreenEdgeBuffer = 4f;
     public float m_MinSize = 6.5f;
-    [HideInInspector] public Transform[] m_Targets;
+    public Transform[] m_Targets;
 
 
     private Camera m_Camera;

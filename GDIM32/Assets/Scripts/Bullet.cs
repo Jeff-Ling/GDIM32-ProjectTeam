@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This script is used to define bullet behaviour
+// Bullet should cross the gameobject that generate it. Should cause damage to enemy and friend
+// Bullet should destroy when it hit something else.
+
 public class Bullet : MonoBehaviour
 {
     public float LifeTime = 2f;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This script is used to calculate player and enemies' health status.
+
 public class PlayerHealth : MonoBehaviour
 {
     public float m_StartingHealth = 100f;

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This script is used to control enemy movement.
+// Currently this is just a basic AI (Random move)
+
 public class EnemyMovement : MonoBehaviour
 {
     public float Speed = 12f;

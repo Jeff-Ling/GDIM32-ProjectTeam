@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This script is used to control player's firing.
+
 public class PlayerShooting : MonoBehaviour
 {
     public int m_PlayerNumber = 1;

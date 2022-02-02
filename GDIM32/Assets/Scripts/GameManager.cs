@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Jiefu Ling (jieful2)
+// This script is used to control game status. 
+// Check win or lose status.
+
+
 public class GameManager : MonoBehaviour
 {
     public GameObject player1;

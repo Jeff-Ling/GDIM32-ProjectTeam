@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Author: Jiefu Ling (jieful2)
+// This scripts is used to generate a field of vision of player.
+
+
 public class FOV : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
