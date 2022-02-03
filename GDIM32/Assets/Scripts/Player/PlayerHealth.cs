@@ -21,6 +21,11 @@ public class PlayerHealth : MonoBehaviour
     {
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
+        
+        if (this.tag != "Enemy")
+        {
+            SetHealthUI();
+        }
     }
 
     // Update is called once per frame
@@ -33,6 +38,12 @@ public class PlayerHealth : MonoBehaviour
     {
         m_CurrentHealth -= damage;
 
+        // Set the UI;
+        if (this.tag != "Enemy")
+        {
+            SetHealthUI();
+        }
+
         // When health is under 0 and m_Dead is false
         if (m_CurrentHealth <= 0f && !m_Dead)
         {
@@ -40,5 +51,15 @@ public class PlayerHealth : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    private void SetHealthUI()
+    {
+        // Adjust the value and colour of the slider.
+        // Set the slider's value appropriately.
+        m_Slider.value = m_CurrentHealth;
+
+        // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
+        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
     }
 }
