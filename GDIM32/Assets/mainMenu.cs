@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Created by Y. Song at 2022/02/02
+
 public class mainMenu : MonoBehaviour
 {
     public void playButton ()
