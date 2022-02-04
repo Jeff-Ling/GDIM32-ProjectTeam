@@ -69,7 +69,7 @@
      <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathRoute.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransform.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IObjectActiveLogic.cs" />
-     <Compile Include="Assets\mainMenu.cs" />
+     <Compile Include="Assets\Scripts\mainMenu.cs" />
      <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionUpdater.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IObjectTransformBody.cs" />
      <Compile Include="Assets\Imported\_\Stuff\Scripts\GameAssets.cs" />
