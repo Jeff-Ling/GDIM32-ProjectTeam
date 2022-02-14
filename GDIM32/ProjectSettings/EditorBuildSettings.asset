@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 5f47de0c589bc664aa7f7cfadf684400
   - enabled: 0
+    path: Assets/Scenes/prologue.unity
+    guid: abb0bef7c46a7764293fe90d2156f679
+  - enabled: 0
+    path: Assets/Scenes/chapter1.unity
+    guid: 7e1bf3cd0b2e0d241b590fea37132f3a
+  - enabled: 0
     path: Assets/Scenes/ProgrommingTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -20,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/endWin.unity
     guid: 99ca9cc5b53f02f47ab5f33e13eb1489
+  - enabled: 1
+    path: Assets/Scenes/endSpecial.unity
+    guid: 571b7871145f6d84d8a92116a7c8e72a
+  - enabled: 1
+    path: Assets/Scenes/credit.unity
+    guid: 9c0dd05fd6070f34e83cece360f7c95d
   m_configObjects: {}
