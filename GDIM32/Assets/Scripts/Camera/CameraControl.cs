@@ -6,7 +6,6 @@ using UnityEngine;
 // This scirpt is used to control camera. To allow camera move with player
 // This is actually imported from Tank Turtorial.
 
-
 public class CameraControl : MonoBehaviour
 {
     public float m_DampTime = 0.2f;

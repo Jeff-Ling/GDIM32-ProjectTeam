@@ -6,6 +6,9 @@ using UnityEngine;
 // This script is used to control enemy movement.
 // Currently this is just a basic AI (Random move)
 
+// We use Finite State Machine to build our AI.
+// State: IDLE, PATROL, SHOOTING
+
 public class EnemyMovement : MonoBehaviour
 {
     public float Speed = 12f;
@@ -13,15 +16,28 @@ public class EnemyMovement : MonoBehaviour
     public float BehaviourBreak = 3f;
 
     private Rigidbody2D rb;
+    private Transform tf;
     private float MovementInputValue = 1f;
     private float TurnInputValue = 0f;
-    private bool Moving = true;
+
     private float Behaviour_lastTime;
     private float Behaviour_currentTime;
+
+    // Fire Element
+    public float fire_break = 3.0f;
+    public Rigidbody2D bullet;
+    public Transform FireTransform;
+    public float bulletSpeed = 10.0f;
+    private float fire_lastTime;
+    private float fire_curTime;
+    private Vector3 targ;
+
+    public string state = "IDLE";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        tf = GetComponent<Transform>();
     }
 
     private void OnEnable()
@@ -36,28 +52,58 @@ public class EnemyMovement : MonoBehaviour
         rb.isKinematic = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        state = "PATROL";
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (state == "PATROL")
+        {
+            PatrolUpdate();
+        }
+        else if (state == "SHOOTING")
+        {
+            ShootingUpdate();
+        }
+    }
+
+    private void PatrolUpdate()
     {
         Behaviour_currentTime = Time.time;
         if (Behaviour_currentTime - Behaviour_lastTime >= BehaviourBreak)
         {
             getRandomInput();
         }
+        Move();
+        Turn();
     }
 
-    private void FixedUpdate()
+    private void ShootingUpdate()
     {
-        if (Moving)
+        // Make enemy stop moving
+        MovementInputValue = 0f;
+        rb.velocity = transform.right * MovementInputValue * Speed * Time.deltaTime;
+
+        // Look At the player and Fire
+        targ.z = 0f;
+
+        Vector3 objectPos = tf.position;
+        targ.x = targ.x - objectPos.x;
+        targ.y = targ.y - objectPos.y;
+
+        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+        tf.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        // record the current time
+        fire_curTime = Time.time;
+
+        // If player press m_fireButton and the time exceed the break: Fire
+        if (fire_curTime - fire_lastTime >= fire_break)
         {
-            // Move and turn the enemy.
-            Move();
-            Turn();
-        }
-        else
-        {
-            MovementInputValue = 0f;
-            rb.velocity = transform.right * MovementInputValue * Speed * Time.deltaTime;
+            Fire();
         }
     }
 
@@ -81,15 +127,24 @@ public class EnemyMovement : MonoBehaviour
         transform.Rotate(Vector3.forward * turn);
     }
 
-    // Stop Enemy Any Behavior
-    public void StopMove()
+    private void Fire()
     {
-        Moving = false;
+        Rigidbody2D shellInstance =
+            Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody2D;
+
+        // set the velocity
+        shellInstance.velocity = bulletSpeed * FireTransform.right;
+
+        // set the tag
+        shellInstance.tag = this.tag;
+
+        // Record the time
+        fire_lastTime = Time.time;
     }
 
-    // Make Enemy Start Move Again
-    public void StartMove()
+    public void getTarget(Vector3 target)
     {
-        Moving = true;
+        targ = target;
     }
+
 }
