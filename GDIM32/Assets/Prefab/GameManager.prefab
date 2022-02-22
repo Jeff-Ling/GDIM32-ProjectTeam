@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d458dba079a80234b8c6e58823623ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
   player2: {fileID: 0}
-  enemys: []
+  enemys:
+  - {fileID: 0}

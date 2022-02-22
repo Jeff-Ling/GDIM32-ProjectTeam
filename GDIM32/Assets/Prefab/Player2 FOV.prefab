@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8827204513064696279
 Transform:
   m_ObjectHideFlags: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  fov: 40
-  viewDistance: 15
+  fov: 50
+  viewDistance: 30
 --- !u!33 &8827204513064696277
 MeshFilter:
   m_ObjectHideFlags: 0

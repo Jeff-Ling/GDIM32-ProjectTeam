@@ -74,10 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff7ad7db1e28624bbe02dd519fcdc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire_break: 2
-  bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
-  FireTransform: {fileID: 7726946174156425076}
-  bulletSpeed: 10
 --- !u!1 &7726946174156425077
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7726946175392093688
 Transform:
   m_ObjectHideFlags: 0
@@ -138,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 7726946175392093690}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7726946173345088078}
   - {fileID: 7726946174156425076}
@@ -182,8 +178,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1834426171
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7defbba3cf1a6484b9674121ac42eff2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -255,9 +251,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51956ba121fd04145aebcf000effaa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 50
+  Speed: 100
   TurnSpeed: 90
   BehaviourBreak: 1
+  fire_break: 0.3
+  bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
+  FireTransform: {fileID: 7726946174156425076}
+  bulletSpeed: 40
+  state: IDLE
 --- !u!114 &7726946173958574213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a780908a83eeb4da7967e234324eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartingHealth: 100
+  m_StartingHealth: 50
   m_Slider: {fileID: 0}
   m_FillImage: {fileID: 0}
   m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}

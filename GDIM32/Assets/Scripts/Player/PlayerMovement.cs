@@ -42,8 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 targetPosition = currentFacing.position;
         Vector3 aimDir = (targetPosition - transform.position).normalized;
+        Vector3 origin = transform.position;
         Fov.SetAimDirection(aimDir);
-        Fov.SetOrigin(transform.position);
+        Fov.SetOrigin(origin);
     }
 
     // Update is called once per frame
@@ -51,8 +52,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 targetPosition = currentFacing.position;
         Vector3 aimDir = (targetPosition - transform.position).normalized;
+        Vector3 origin = transform.position;
         Fov.SetAimDirection(aimDir);
-        Fov.SetOrigin(transform.position);
+        Fov.SetOrigin(origin);
 
         getPlayerInput();
     }
