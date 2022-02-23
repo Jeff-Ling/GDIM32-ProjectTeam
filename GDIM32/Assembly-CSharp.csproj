@@ -80,6 +80,7 @@
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectLogic_SkeletonUpdater.cs" />
      <Compile Include="Assets\Imported\_\Base\BaseScripts\GameHandler_Setup.cs" />
      <Compile Include="Assets\Imported\_\Stuff\Scripts\SpriteAnimator.cs" />
+     <Compile Include="Assets\Scripts\bandageControl.cs" />
      <Compile Include="Assets\Imported\_\Stuff\Scripts\Dirt_Handler.cs" />
      <Compile Include="Assets\Imported\_\Base\BaseScripts\Player_Base.cs" />
      <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\MapPos.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\Scripts\BehaviourTreeScripts\RobberBehaviour.cs" />
      <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\UnitMovement.cs" />
      <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathNode.cs" />
+     <Compile Include="Assets\Scripts\medKitControl.cs" />
      <Compile Include="Assets\Scripts\BehaviourTreeScripts\BehaviourTree.cs" />
      <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_Object.cs" />
      <Compile Include="Assets\Imported\_\Base\BaseScripts\CharacterPositionMovementHandler.cs" />

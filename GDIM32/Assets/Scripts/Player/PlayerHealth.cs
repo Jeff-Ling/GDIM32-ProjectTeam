@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Color m_FullHealthColor = Color.green;
     public Color m_ZeroHealthColor = Color.red;
 
-    private float m_CurrentHealth;
+    public float m_CurrentHealth;
     private bool m_Dead;
 
     private void OnEnable()
