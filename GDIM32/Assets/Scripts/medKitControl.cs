@@ -12,8 +12,14 @@ public class medKitControl : MonoBehaviour
     {
         if (collison.tag == "Player1" || collison.tag == "Player2")
         {
+            collison.GetComponent<PlayerHealth>().m_CurrentHealth += 60f;
+
+            if (collison.GetComponent<PlayerHealth>().m_CurrentHealth >= 100f)
+            {
+                collison.GetComponent<PlayerHealth>().m_CurrentHealth = 100f;
+            }
+
             Destroy(gameObject);
-            // Player health ++
         }
     }
 }
