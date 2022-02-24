@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void SetHealthUI()
+    public void SetHealthUI()
     {
         // Adjust the value and colour of the slider.
         // Set the slider's value appropriately.

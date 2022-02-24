@@ -10,15 +10,17 @@ public class bandageControl : MonoBehaviour
 {
     private void OnTriggerEnter2D (Collider2D collison)
     {
-        if (collison.tag == "Player1" || collison.tag == "Player2")
+        if (collison.name == "Player1" || collison.name == "Player2")
         {
             // if (collison.tag == "Player1")
-            collison.GetComponent<PlayerHealth>().m_CurrentHealth += 30f;
+            collison.gameObject.GetComponent<PlayerHealth>().m_CurrentHealth += 30f;
 
-            if (collison.GetComponent<PlayerHealth>().m_CurrentHealth >= 100f)
+            if (collison.gameObject.GetComponent<PlayerHealth>().m_CurrentHealth >= 100f)
             {
-                collison.GetComponent<PlayerHealth>().m_CurrentHealth = 100f;
+                collison.gameObject.GetComponent<PlayerHealth>().m_CurrentHealth = 100f;
             }
+
+            collison.gameObject.GetComponent<PlayerHealth>().SetHealthUI();
 
             Destroy(gameObject);
         }
