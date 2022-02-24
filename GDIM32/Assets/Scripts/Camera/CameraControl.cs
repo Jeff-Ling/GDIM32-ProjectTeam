@@ -60,14 +60,14 @@ public class CameraControl : MonoBehaviour
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
 
-            averagePos += m_Targets[i].position;
+            averagePos += m_Targets[i].position - new Vector3(0f, 10f, 0f);
             numTargets++;
         }
 
         if (numTargets > 0)
             averagePos /= numTargets;
 
-        averagePos.y = transform.position.y;
+        // averagePos.y = transform.position.y;
 
         m_DesiredPosition = averagePos;
     }
@@ -91,7 +91,7 @@ public class CameraControl : MonoBehaviour
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
 
-            Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].position);
+            Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].position - new Vector3(0f, 10f, 0f));
 
             Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
 

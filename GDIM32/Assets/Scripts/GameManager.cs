@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // public GameObject player1;
+    public GameObject player1;
     public GameObject player2;
 
     public GameObject[] enemys;
@@ -37,8 +37,7 @@ public class GameManager : MonoBehaviour
 
     private bool checkPlayerAvailability()
     {
-        // return (player1 == null || player2 == null);
-        return (player2 == null);
+        return (player1 == null || player2 == null);
     }
 
     private bool checkEnemyAvailability()
