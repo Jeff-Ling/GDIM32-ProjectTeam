@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (checkEnemyAvailability())
         {
             // Game Win
-            SceneManager.LoadScene("endWin");
+            // SceneManager.LoadScene("endWin");
         }
     }
 
@@ -55,5 +55,13 @@ public class GameManager : MonoBehaviour
         }
 
         return NoManAlive;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Player1" || collision.name == "Player2")
+        {
+            SceneManager.LoadScene("endWin");
+        }
     }
 }

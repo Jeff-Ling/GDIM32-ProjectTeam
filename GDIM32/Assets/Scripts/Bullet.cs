@@ -22,14 +22,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag != this.tag)
         {
-            if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name == "Enemy")
+            if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name.StartsWith("Enemy"))
             {
                 PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
                 playerHealth.TakeDamage(Damage);
             }
 
-            if (collision.name != "Enemy FOV" && collision.name != "Bullet")
+            if (collision.name != "FOV" && !collision.name.StartsWith("Bullet"))
             {
                 Destroy(gameObject);
             }
