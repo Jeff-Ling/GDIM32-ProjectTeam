@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Author: Jiefu Ling (jieful2)
+// Author: Jiefu Ling (jieful2); Xiao Jing (xjing2)
 // This script is used to control enemy's firing. 
 // When player1 or 2 enter the collider, we change the state to SHOOTING. 
 // When they leave, we back to PATROL.

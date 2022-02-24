@@ -31,7 +31,7 @@ public class menuControl : MonoBehaviour
 
     public void playButton()
     {
-        SceneManager.LoadScene("chapter1");
+        SceneManager.LoadScene("MAP");
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

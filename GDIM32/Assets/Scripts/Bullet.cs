@@ -29,7 +29,10 @@ public class Bullet : MonoBehaviour
                 playerHealth.TakeDamage(Damage);
             }
 
-            Destroy(gameObject);
+            if (collision.name != "Enemy FOV" && collision.name != "Bullet")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -31,21 +31,13 @@ public class GameManager : MonoBehaviour
         if (checkEnemyAvailability())
         {
             // Game Win
+            SceneManager.LoadScene("endWin");
         }
-        
     }
 
     private bool checkPlayerAvailability()
     {
         return (player1 == null || player2 == null);
-    }
-
-    private void OnTriggerEnter2D (Collider2D collison)
-    {
-        if (collison.tag == "Player1" || collison.tag == "Player2")
-        {
-            SceneManager.LoadScene("endWin");
-        }
     }
 
     private bool checkEnemyAvailability()
@@ -64,5 +56,4 @@ public class GameManager : MonoBehaviour
 
         return NoManAlive;
     }
-
 }

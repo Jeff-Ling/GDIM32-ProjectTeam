@@ -12,8 +12,6 @@ public class bandageControl : MonoBehaviour
     {
         if (collison.tag == "Player1" || collison.tag == "Player2")
         {
-            Destroy(gameObject);
-
             // if (collison.tag == "Player1")
             collison.GetComponent<PlayerHealth>().m_CurrentHealth += 30f;
 
@@ -21,6 +19,8 @@ public class bandageControl : MonoBehaviour
             {
                 collison.GetComponent<PlayerHealth>().m_CurrentHealth = 100f;
             }
+
+            Destroy(gameObject);
         }
     }
 }
