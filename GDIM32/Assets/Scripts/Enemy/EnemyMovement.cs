@@ -7,7 +7,7 @@ using UnityEngine;
 // Currently this is just a basic AI (Random move)
 
 // We use Finite State Machine to build our AI.
-// State: IDLE, PATROL, SHOOTING
+// State: IDLE, PATROL, SHOOTING, CHASE
 
 public class EnemyMovement : MonoBehaviour
 {

@@ -38,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        m_TurnAxisName = "Rotation" + m_PlayerNumber;
+        m_MovementAxisName = "Vertical" + m_PlayerNumber;
+        m_TurnAxisName = "Horizontal" + m_PlayerNumber;
 
         Vector3 targetPosition = currentFacing.position;
         Vector3 aimDir = (targetPosition - transform.position).normalized;
@@ -69,57 +70,13 @@ public class PlayerMovement : MonoBehaviour
     private void getPlayerInput()
     {
         // Store the player's input
+        m_MovementInputValue = Input.GetAxisRaw(m_MovementAxisName);
         m_TurnInputValue = Input.GetAxisRaw(m_TurnAxisName);
     }
 
     private void Move()
     {
-        // Player 1 Movement
-        Vector3 moveDir = new Vector3(0, 0);
-        if (m_PlayerNumber == 1)
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                moveDir.y = +1;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                moveDir.y = -1;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                moveDir.x = -1;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                moveDir.x = +1;
-            }
-            moveDir.Normalize();
-        }
-        // Player 2 Movement
-        else
-        {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                moveDir.y = +1;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                moveDir.y = -1;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                moveDir.x = -1;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                moveDir.x = +1;
-            }
-            moveDir.Normalize();
-        }
-
-
-        m_Rigidbody.velocity = moveDir * m_Speed * Time.deltaTime;
+        m_Rigidbody.velocity = transform.right * m_MovementInputValue * m_Speed * Time.deltaTime;
     }
 
     private void Turn()
