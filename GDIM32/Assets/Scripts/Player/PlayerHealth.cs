@@ -14,18 +14,15 @@ public class PlayerHealth : MonoBehaviour
     public Color m_FullHealthColor = Color.green;
     public Color m_ZeroHealthColor = Color.red;
 
-    public float m_CurrentHealth;
+    private float m_CurrentHealth;
     private bool m_Dead;
 
     private void OnEnable()
     {
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
-        
-        if (this.tag != "Enemy")
-        {
-            SetHealthUI();
-        }
+
+        SetHealthUI();
     }
 
     // Update is called once per frame
@@ -38,11 +35,8 @@ public class PlayerHealth : MonoBehaviour
     {
         m_CurrentHealth -= damage;
 
-        // Set the UI;
-        if (this.tag != "Enemy")
-        {
-            SetHealthUI();
-        }
+        SetHealthUI();
+
 
         // When health is under 0 and m_Dead is false
         if (m_CurrentHealth <= 0f && !m_Dead)
@@ -53,7 +47,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void SetHealthUI()
+    public void GetHeal(float heal)
+    {
+        m_CurrentHealth += heal;
+
+        if (m_CurrentHealth > 100f)
+        {
+            m_CurrentHealth = 100f;
+        }
+
+        SetHealthUI();
+    }
+
+    private void SetHealthUI()
     {
         // Adjust the value and colour of the slider.
         // Set the slider's value appropriately.
