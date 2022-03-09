@@ -45,13 +45,14 @@ public class EnemyShooting : MonoBehaviour
         if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
         {
             // Send target information
-            enemyMovement.getTarget(collision.transform.position);
-            enemyMovement.state = "SHOOTING";
+            enemyMovement.GetTarget(collision.transform.position);
+            enemyMovement.ChangeState("SHOOTING");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        enemyMovement.state = "PATROL";
+        enemyMovement.GetTarget(collision.transform.position);
+        enemyMovement.ChangeState("CHASE");
     }
 }

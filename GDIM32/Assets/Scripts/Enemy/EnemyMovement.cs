@@ -32,7 +32,10 @@ public class EnemyMovement : MonoBehaviour
     private float fire_curTime;
     private Vector3 targ;
 
-    public string state = "IDLE";
+    // Chase Element
+    public float chase_time = 5f;
+
+    private string state = "IDLE";
 
     private void Awake()
     {
@@ -68,6 +71,10 @@ public class EnemyMovement : MonoBehaviour
         {
             ShootingUpdate();
         }
+        else if (state == "CHASE")
+        {
+            ChaseUpdate();
+        }
     }
 
     private void PatrolUpdate()
@@ -85,7 +92,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Make enemy stop moving
         MovementInputValue = 0f;
-        rb.velocity = transform.right * MovementInputValue * Speed * Time.deltaTime;
+        Move();
 
         // Look At the player and Fire
         targ.z = 0f;
@@ -104,6 +111,24 @@ public class EnemyMovement : MonoBehaviour
         if (fire_curTime - fire_lastTime >= fire_break)
         {
             Fire();
+        }
+
+        Debug.Log(targ);
+
+    }
+
+    private void ChaseUpdate()
+    {
+        MovementInputValue = 5f;
+        Move();
+
+        Debug.Log(targ);
+
+
+        if (Vector3.Distance(tf.position, targ) <= 2f)
+        {
+            Debug.Log("state change to partol");
+            ChangeState("PATROL");
         }
     }
 
@@ -142,9 +167,14 @@ public class EnemyMovement : MonoBehaviour
         fire_lastTime = Time.time;
     }
 
-    public void getTarget(Vector3 target)
+    public void GetTarget(Vector3 target)
     {
         targ = target;
+    }
+
+    public void ChangeState(string s)
+    {
+        state = s;
     }
 
 }
