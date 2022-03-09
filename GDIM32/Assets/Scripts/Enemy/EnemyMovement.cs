@@ -112,18 +112,12 @@ public class EnemyMovement : MonoBehaviour
         {
             Fire();
         }
-
-        Debug.Log(targ);
-
     }
 
     private void ChaseUpdate()
     {
         MovementInputValue = 5f;
         Move();
-
-        Debug.Log(targ);
-
 
         if (Vector3.Distance(tf.position, targ) <= 2f)
         {

@@ -18,10 +18,14 @@ public class PlayerShooting : MonoBehaviour
     private float fire_lastTime;
     private float fire_curTime;
 
+    private AudioSource AS;
+
     // Start is called before the first frame update
     void Start()
     {
         m_FireButton = "Fire" + m_PlayerNumber;
+
+        AS = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,9 @@ public class PlayerShooting : MonoBehaviour
 
         // set the tag
         shellInstance.tag = this.tag;
+
+        // Play the clip
+        AS.Play();
 
         // Record the time
         fire_lastTime = Time.time;
