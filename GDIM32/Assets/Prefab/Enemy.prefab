@@ -622,7 +622,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726946175392093690}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51956ba121fd04145aebcf000effaa2e, type: 3}
   m_Name: 
@@ -634,7 +634,7 @@ MonoBehaviour:
   bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
   FireTransform: {fileID: 7726946174156425076}
   bulletSpeed: 40
-  state: IDLE
+  chase_time: 5
 --- !u!114 &7726946173958574213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,3 +652,11 @@ MonoBehaviour:
   m_FillImage: {fileID: 512867579}
   m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
   m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  AS: {fileID: 0}
+  Death_AudioClip:
+  - {fileID: 8300000, guid: 076bba2fa9b69bc45a62db8437c3b7eb, type: 3}
+  - {fileID: 8300000, guid: 2c070e1009c0f044bad6d41a90ecf910, type: 3}
+  - {fileID: 8300000, guid: ce8e8db9ece92eb4e863c0770d19b676, type: 3}
+  - {fileID: 8300000, guid: bd1c00e4f43cb624396e7da5f706c3c6, type: 3}
+  - {fileID: 8300000, guid: 9326289540fc73541a551d3fa139c924, type: 3}
+  - {fileID: 8300000, guid: adc641623d5c12446a11a1a3833d8361, type: 3}

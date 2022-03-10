@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeTime: 10
   Damage: 30
+  HitOnWall: {fileID: 8300000, guid: 1bf1c57f17f193b4ba57a3566afc71bc, type: 3}
 --- !u!50 &8500833655986505669
 Rigidbody2D:
   serializedVersion: 4

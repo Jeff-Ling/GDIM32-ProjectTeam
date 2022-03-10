@@ -144,6 +144,7 @@
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransformBody.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\Shoot_Flash.cs" />
+    <Compile Include="Assets\Scripts\DoNotDestoryOnLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

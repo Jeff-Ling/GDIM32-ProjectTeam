@@ -12,9 +12,14 @@ public class Bullet : MonoBehaviour
     public float LifeTime = 2f;
     public float Damage = 30f;
 
+    private AudioSource AS;
+    public AudioClip HitOnWall;
+
     // Start is called before the first frame update
     void Start()
     {
+        AS = GameObject.Find("SoundSystem").GetComponent<AudioSource>();
+
         Destroy(gameObject, LifeTime);
     }
 
@@ -34,5 +39,12 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (collision.gameObject.tag == "Map")
+        {
+            AS.clip = HitOnWall;
+            AS.Play();
+        }
+
     }
 }

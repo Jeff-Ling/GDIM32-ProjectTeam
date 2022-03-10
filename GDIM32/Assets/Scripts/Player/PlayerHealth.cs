@@ -17,12 +17,21 @@ public class PlayerHealth : MonoBehaviour
     private float m_CurrentHealth;
     private bool m_Dead;
 
+    // Audio Component
+    public AudioSource AS;
+    public AudioClip[] Death_AudioClip;
+
     private void OnEnable()
     {
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
 
         SetHealthUI();
+    }
+
+    private void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -42,6 +51,11 @@ public class PlayerHealth : MonoBehaviour
         if (m_CurrentHealth <= 0f && !m_Dead)
         {
             m_Dead = true;
+
+            // Play the clip
+            int random_clip = Random.Range(0, Death_AudioClip.Length);
+            AS.clip = Death_AudioClip[random_clip];
+            AS.Play();
 
             Destroy(this.gameObject);
         }

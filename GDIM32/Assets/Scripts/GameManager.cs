@@ -16,6 +16,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] enemys;
 
+    public float m_EndDelay = 30f;       // The delay between the player dead and change scene.
+    private WaitForSeconds m_EndWait;    // Used to have a delay.
+
+
+    void Start()
+    {
+        m_EndWait = new WaitForSeconds(m_EndDelay);
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +32,7 @@ public class GameManager : MonoBehaviour
         if (checkPlayerAvailability())
         {
             // Game Lose
+            // StartCoroutine(EndDelay());         //Not Working
             SceneManager.LoadScene("endLose");
         }
 
@@ -33,6 +42,11 @@ public class GameManager : MonoBehaviour
             // Game Win
             // SceneManager.LoadScene("endWin");
         }
+    }
+
+    private IEnumerator EndDelay()
+    {
+        yield return m_EndWait;
     }
 
     private bool checkPlayerAvailability()
