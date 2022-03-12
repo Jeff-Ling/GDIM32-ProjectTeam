@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222516240}
   - component: {fileID: 222516241}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Shield Collider
   m_TagString: Player1
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.9991559, y: 0.26681697}
+  m_Offset: {x: 1.0339077, y: 0.2866447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36788863, y: 2.4692822}
+  m_Size: {x: 0.66118246, y: 2.4482694}
   m_EdgeRadius: 0
 --- !u!1 &370768609
 GameObject:
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818375271}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Facing Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.57143825, y: -0.00059103966}
+  m_Offset: {x: -0.6178019, y: -0.012994766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -402,7 +402,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5956268, y: 2.726462}
+  m_Size: {x: 2.4036703, y: 2.718193}
   m_EdgeRadius: 0
 --- !u!114 &5266305465233313865
 MonoBehaviour:
@@ -569,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5266305465643448138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fire Place
   m_TagString: Untagged
   m_Icon: {fileID: 0}

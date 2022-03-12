@@ -9,7 +9,10 @@ using UnityEngine;
 public class medKitControl : MonoBehaviour
 {
 
-    public float heal = 60f; 
+    public float heal = 60f;
+
+    public AudioSource AS;
+    public AudioClip PickUpThing;
 
     private void OnTriggerEnter2D (Collider2D collison)
     {
@@ -17,6 +20,9 @@ public class medKitControl : MonoBehaviour
         {
 
             collison.gameObject.GetComponent<PlayerHealth>().GetHeal(heal);
+
+            AS.clip = PickUpThing;
+            AS.Play();
 
             Destroy(gameObject);
         }

@@ -29,17 +29,6 @@ public class PlayerHealth : MonoBehaviour
         SetHealthUI();
     }
 
-    private void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(float damage)
     {
         m_CurrentHealth -= damage;

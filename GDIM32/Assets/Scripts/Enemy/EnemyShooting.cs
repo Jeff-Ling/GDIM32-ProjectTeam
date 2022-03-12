@@ -52,7 +52,11 @@ public class EnemyShooting : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        enemyMovement.GetTarget(collision.transform.position);
-        enemyMovement.ChangeState("CHASE");
+        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        {
+            enemyMovement.GetTarget(collision.transform.position);
+            enemyMovement.ChangeState("CHASE");
+            enemyMovement.SetChaseLastTime(Time.time);
+        }
     }
 }

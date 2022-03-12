@@ -9,14 +9,20 @@ using UnityEngine;
 public class bandageControl : MonoBehaviour
 {
 
-    public float heal = 30f;
+    public float heal = 60f;
 
-    private void OnTriggerEnter2D (Collider2D collison)
+    public AudioSource AS;
+    public AudioClip PickUpThing;
+
+    private void OnTriggerEnter2D(Collider2D collison)
     {
         if (collison.name == "Player1" || collison.name == "Player2")
         {
 
             collison.gameObject.GetComponent<PlayerHealth>().GetHeal(heal);
+
+            AS.clip = PickUpThing;
+            AS.Play();
 
             Destroy(gameObject);
         }

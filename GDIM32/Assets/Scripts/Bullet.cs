@@ -19,31 +19,43 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         AS = GameObject.Find("SoundSystem").GetComponent<AudioSource>();
+        if (AS == null)
+        {
+            Debug.Log("G");
+        }
 
         Destroy(gameObject, LifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.gameObject.name == "Shield Collider")
+            Destroy(this.gameObject);
+
         if (collision.gameObject.tag != this.tag)
         {
             if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name.StartsWith("Enemy"))
-            {
+            {                
+
                 PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
                 playerHealth.TakeDamage(Damage);
             }
 
-            if (collision.name != "FOV" && !collision.name.StartsWith("Bullet"))
+            if (collision.gameObject.name != "FOV" && !collision.gameObject.name.StartsWith("Bullet"))
             {
                 Destroy(gameObject);
             }
         }
 
-        if (collision.gameObject.tag == "Map")
+        if (this.gameObject.tag != "Enemy")
         {
-            AS.clip = HitOnWall;
-            AS.Play();
+            if (collision.gameObject.tag == "Map")
+            {
+                AS.clip = HitOnWall;
+                AS.Play();
+            }
         }
 
     }
