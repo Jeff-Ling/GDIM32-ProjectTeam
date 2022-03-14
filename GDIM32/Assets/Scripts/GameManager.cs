@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Player1" || collision.name == "Player2")
+        if (collision.name == "Player1" && collision.name == "Player2")
         {
             SceneManager.LoadScene("endWin");
         }
