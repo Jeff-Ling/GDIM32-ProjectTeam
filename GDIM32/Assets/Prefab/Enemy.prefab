@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 486675019}
   - component: {fileID: 486675021}
   - component: {fileID: 486675020}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 512867578}
   - component: {fileID: 512867580}
   - component: {fileID: 512867579}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 1603330677}
   - component: {fileID: 1603330676}
   - component: {fileID: 1603330675}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3.1100004, y: 0}
+  m_AnchoredPosition: {x: -3.1, y: -0.01}
   m_SizeDelta: {x: 5, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1603330677
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088688097}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102636168}
   - component: {fileID: 2102636169}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 7726946173345088078}
   - component: {fileID: 7726946173345088077}
   - component: {fileID: 7726946173345088076}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FOV
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7726946174156425076}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fire Place
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726946174156425077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1, y: -0.23, z: 0}
+  m_LocalPosition: {x: 4, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7726946175392093688}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 7726946175392093695}
   - component: {fileID: 7726946175392093693}
   - component: {fileID: 7726946173958574213}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ SpriteRenderer:
   m_SortingLayerID: 1834426171
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7defbba3cf1a6484b9674121ac42eff2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49385bf30aee91a42a4fe2b245f98320, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -602,18 +602,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13080406, y: 0.011784077}
+  m_Offset: {x: 0.109365284, y: -0.027562618}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.2017246, y: 0.5442656}
-    oldSize: {x: 8.63, y: 6.89}
+    pivot: {x: 0.20455186, y: 0.542495}
+    oldSize: {x: 7.1916666, y: 5.741667}
     newSize: {x: 8.63, y: 6.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4080696, y: 6.161317}
+  m_Size: {x: 3.0057254, y: 4.939555}
   m_EdgeRadius: 0
 --- !u!114 &7726946175392093693
 MonoBehaviour:

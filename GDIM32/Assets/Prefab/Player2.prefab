@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Speed: 1000
   m_TurnSpeed: 200
   currentFacing: {fileID: 1230043718964554436}
+  Walk_AudioClip: {fileID: 8300000, guid: 91f75a50b7e2b6145bb600bf03cb886e, type: 3}
 --- !u!114 &1230043718979084255
 MonoBehaviour:
   m_ObjectHideFlags: 0
