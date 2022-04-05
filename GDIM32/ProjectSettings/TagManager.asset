@@ -11,6 +11,7 @@ TagManager:
   - Door
   - medKit
   - bandage
+  - InputField
   layers:
   - Default
   - TransparentFX

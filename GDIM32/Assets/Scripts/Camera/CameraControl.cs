@@ -6,7 +6,7 @@ using UnityEngine;
 // This scirpt is used to control camera. To allow camera move with player
 // This is actually imported from Tank Turtorial.
 
-public class CameraControl : MonoBehaviour
+public class CameraControl : Singleton<CameraControl>
 {
     public float m_DampTime = 0.2f;
     public float m_ScreenEdgeBuffer = 4f;
@@ -26,7 +26,7 @@ public class CameraControl : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (m_Targets.Length == 1)
         {

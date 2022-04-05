@@ -34,7 +34,11 @@ public class menuControl : MonoBehaviour
         SceneManager.LoadScene("chapter1");
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    public void multiButton()
+    {
+        SceneManager.LoadScene("RoomList");
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void quitButton()
     {
         Debug.Log("Quit Success.");
