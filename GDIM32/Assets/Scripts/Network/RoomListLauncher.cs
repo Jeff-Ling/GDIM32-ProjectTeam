@@ -13,6 +13,7 @@ public class RoomListLauncher : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        PhotonNetwork.Disconnect();
         PhotonNetwork.ConnectUsingSettings();
     }
     public override void OnConnectedToMaster()
@@ -32,8 +33,7 @@ public class RoomListLauncher : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom()
-    {
+    {       
         PhotonNetwork.LoadLevel(9);
     }
-
 }

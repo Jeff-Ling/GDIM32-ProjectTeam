@@ -65,6 +65,7 @@
     <Compile Include="Assets\Imported\_\Base\BaseScripts\CharacterWaypointsHandler.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\World_Mesh.cs" />
+    <Compile Include="Assets\Scripts\Network\WaitRoomManager.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IActiveInactive.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\UnitMovement.cs" />
     <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathNode.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
+    <Compile Include="Assets\Scripts\UI\RoomNameButtom.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Scripts\BehaviourTreeScripts\BehaviourTree.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_Object.cs" />
@@ -171,8 +173,6 @@
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransformBody.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\Shoot_Flash.cs" />
-    <Compile Include="Assets\Scripts\Network\WaitRoomManager.cs" />
-    <Compile Include="Assets\Scripts\UI\RoomNameButtom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

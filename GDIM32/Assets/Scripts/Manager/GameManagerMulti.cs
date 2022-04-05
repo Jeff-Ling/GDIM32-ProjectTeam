@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManagerMulti : Singleton<GameManagerMulti>
 {
-    private UIManager uiManager;
     private bool gameStart = false;
 
     public int CheckPlayerNumbers()
@@ -13,7 +12,6 @@ public class GameManagerMulti : Singleton<GameManagerMulti>
     }
     void Start()
     {
-        uiManager = GetComponent<UIManager>();
         StartCoroutine(WaitForPlayers());
     }
 

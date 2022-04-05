@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7276667708950627963}
   m_Layer: 5
   m_Name: RoomNameBotton
-  m_TagString: Untagged
+  m_TagString: RoomListButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10f5263da98f2c4aa69c9efd1a770e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
 --- !u!222 &7276667708950627957
 CanvasRenderer:
   m_ObjectHideFlags: 0

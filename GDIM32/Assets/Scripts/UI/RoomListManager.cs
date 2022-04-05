@@ -9,18 +9,35 @@ public class RoomListManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject roomNamePrefab;
     [SerializeField] private Transform gridLayout;
+    Dictionary<string, RoomInfo> myRoomList = new Dictionary<string, RoomInfo>();
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         for(int i = 0; i<gridLayout.childCount;i++)
         {
-            if(gridLayout.GetChild(i).gameObject.GetComponentInChildren<Text>().text == roomList[i].Name)
+            Destroy(gridLayout.GetChild(i).gameObject);
+        }
+        foreach (var r in roomList)
+        {
+            if (!r.IsOpen || !r.IsVisible || r.RemovedFromList)
             {
-                Destroy(gridLayout.GetChild(i).gameObject);
+                if (myRoomList.ContainsKey(r.Name))
+                {
+                    myRoomList.Remove(r.Name);
+                }
+                continue;
+            }
+            if (myRoomList.ContainsKey(r.Name))
+            {
+                myRoomList[r.Name] = r;
+            }
+            else
+            {
+                myRoomList.Add(r.Name, r);
             }
         }
-        foreach(var room in roomList)
+        foreach (var room in myRoomList.Values)
         {
-            GameObject newRoom = Instantiate(roomNamePrefab, gridLayout.position, Quaternion.identity,gridLayout);
+            GameObject newRoom = Instantiate(roomNamePrefab, gridLayout.position, Quaternion.identity, gridLayout);
             newRoom.GetComponentInChildren<Text>().text = room.Name + "("+ room.PlayerCount +"/"+ room.MaxPlayers + ")";
             newRoom.GetComponent<RoomNameButtom>().roomInfo = room;
         }

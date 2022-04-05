@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 ////////////////////////////////////
 //Created by Y. Song at 2022.02.02//
@@ -54,6 +55,7 @@ public class menuControl : MonoBehaviour
 
     public void returnButton()
     {
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Menu");
     }
 

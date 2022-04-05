@@ -12,6 +12,9 @@ TagManager:
   - medKit
   - bandage
   - InputField
+  - RoomListButton
+  - PlayerChoosePref
+  - ReadyButton
   layers:
   - Default
   - TransparentFX
