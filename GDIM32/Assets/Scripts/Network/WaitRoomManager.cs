@@ -20,7 +20,14 @@ public class WaitRoomManager : MonoBehaviourPunCallbacks
         else
         {
             if (GameObject.FindGameObjectsWithTag("PlayerChoosePref").Length == 1) { return; }
-            PhotonNetwork.Instantiate("P2Choose", Vector3.zero, Quaternion.identity, 0);
+            if (GameObject.FindGameObjectWithTag("PlayerChoosePref").name == "P1Choose")
+            {
+                PhotonNetwork.Instantiate("P2Choose", Vector3.zero, Quaternion.identity, 0);
+            }
+            else
+            {
+                PhotonNetwork.Instantiate("P1Choose", Vector3.zero, Quaternion.identity, 0);
+            }
         }
     }
 
