@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,108 +8,155 @@ using UnityEngine.UI;
 
 public class WaitRoomManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private GameObject loadingPanel;
+    [SerializeField] private GameObject readyButton;
     private int playerNum;
+    private GameObject playerChoosePref;
+    private GameObject[] playerChoosePrefs;
 
-    void Start()
+
+    public void Start()
     {
-        playerNum = PhotonNetwork.CountOfPlayersInRooms;
-        if (playerNum == 0)
+        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
+        PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("RoomName"), options, default);       
+    }
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+    }
+    public override void OnJoinedRoom()
+    {
+        if (PhotonNetwork.IsMasterClient)
         {
-            if(GameObject.FindGameObjectWithTag("PlayerChoosePref") != null){ return; }
-            PhotonNetwork.Instantiate("P1Choose", Vector3.zero, Quaternion.identity, 0);
+            playerNum = 0;
         }
         else
         {
-            if (GameObject.FindGameObjectsWithTag("PlayerChoosePref").Length == 1) { return; }
-            if (GameObject.FindGameObjectWithTag("PlayerChoosePref").name == "P1Choose")
-            {
-                PhotonNetwork.Instantiate("P2Choose", Vector3.zero, Quaternion.identity, 0);
-            }
-            else
-            {
-                PhotonNetwork.Instantiate("P1Choose", Vector3.zero, Quaternion.identity, 0);
-            }
+            playerNum = 1;
+        }
+        //PhotonNetwork.Instantiate("PlayerChoose",Vector3.zero,Quaternion.identity).transform.SetParent(playerPanel.transform);
+        if (playerNum == 0)
+        {
+            playerChoosePref = PhotonNetwork.Instantiate("P1Choose", Vector3.zero, Quaternion.identity, 0);
+        }
+        else
+        {
+            playerChoosePref = PhotonNetwork.Instantiate("P2Choose", Vector3.zero, Quaternion.identity, 0);
+        }
+        playerChoosePrefs = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
+        loadingPanel.SetActive(false);
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if(playerNum == 1)
+        {
+            playerNum = 0;
+            PhotonNetwork.Destroy(playerChoosePref);
+            playerChoosePref = PhotonNetwork.Instantiate("P1Choose", Vector3.zero, Quaternion.identity, 0);
+            playerChoosePrefs = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
         }
     }
-
     public void GunTypeButton()
     {
-        GameObject[] playerChoosePref = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
-        for(int i=0; i<playerChoosePref.Length; i++)
+        for(int i=0; i<playerChoosePrefs.Length; i++)
         {
-            if(playerChoosePref[i].GetPhotonView().IsMine)
+            if(playerChoosePrefs[i].GetPhotonView().IsMine)
             {
-                if (playerChoosePref[i].transform.Find("Ready").gameObject.activeSelf)
+                if (playerChoosePrefs[i].transform.Find("Ready").gameObject.GetComponent<Text>().enabled)
                 {
                     return;
                 }
-                playerChoosePref[i].transform.Find("Sheild").gameObject.SetActive(false);
-                playerChoosePref[i].transform.Find("Gun").gameObject.SetActive(true);
+                playerChoosePrefs[i].transform.Find("Sheild").gameObject.GetComponent<Image>().enabled = false;
+                playerChoosePrefs[i].transform.Find("Gun").gameObject.GetComponent<Image>().enabled = true;
+                playerChoosePrefs[i].GetComponent<PlayerChoosePrefManager>().playerType = "Gun";
+                PlayerPrefs.SetString("PlayerType", "Gun");
                 return;
             }
         }
     }
     public void SheildTypeButton()
     {
-        GameObject[] playerChoosePref = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
-        for (int i = 0; i < playerChoosePref.Length; i++)
+        for (int i = 0; i < playerChoosePrefs.Length; i++)
         {
-            if (playerChoosePref[i].GetPhotonView().IsMine)
+            if (playerChoosePrefs[i].GetPhotonView().IsMine)
             {
-                if(playerChoosePref[i].transform.Find("Ready").gameObject.activeSelf)
+                if(playerChoosePrefs[i].transform.Find("Ready").gameObject.GetComponent<Text>().enabled)
                 {
                     return;
                 }
-                playerChoosePref[i].transform.Find("Sheild").gameObject.SetActive(true);
-                playerChoosePref[i].transform.Find("Gun").gameObject.SetActive(false);
+                playerChoosePrefs[i].transform.Find("Sheild").gameObject.GetComponent<Image>().enabled = true;
+                playerChoosePrefs[i].transform.Find("Gun").gameObject.GetComponent<Image>().enabled = false;
+                playerChoosePrefs[i].GetComponent<PlayerChoosePrefManager>().playerType = "Sheild";
+                PlayerPrefs.SetString("PlayerType", "Sheild");
                 return;
             }
         }
     }
     public void ReadyButton()
     {
-        GameObject[] playerChoosePref = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
-        for (int i = 0; i < playerChoosePref.Length; i++)
+        for (int i = 0; i < playerChoosePrefs.Length; i++)
         {
-            if (playerChoosePref[i].GetPhotonView().IsMine)
+            if (playerChoosePrefs[i].GetPhotonView().IsMine)
             {
-                playerChoosePref[i].transform.Find("Ready").gameObject.SetActive(!playerChoosePref[i].transform.Find("Ready").gameObject.activeSelf);
+                playerChoosePrefs[i].transform.Find("Ready").gameObject.GetComponent<Text>().enabled = !playerChoosePrefs[i].transform.Find("Ready").gameObject.GetComponent<Text>().enabled;
                 return;
             }
         }
     }
+
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && playerChoosePrefs.Length != 2)
+        {
+            playerChoosePrefs = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
+        }
         if (PlayersHaveSameType())
         {
-            GameObject[] playerChoosePref = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
-            for (int i = 0; i < playerChoosePref.Length; i++)
+            for (int i = 0; i < playerChoosePrefs.Length; i++)
             {
-                if (playerChoosePref[i].GetPhotonView().IsMine && !playerChoosePref[i].transform.Find("Ready").gameObject.activeSelf)
+                if (playerChoosePrefs[i].GetPhotonView().IsMine && !playerChoosePrefs[i].transform.Find("Ready").gameObject.GetComponent<Text>().enabled)
                 {
-                    GameObject.FindGameObjectWithTag("ReadyButton").GetComponent<Button>().interactable = false;
+                    readyButton.SetActive(false);
+                    break;
                 }
                 else
                 {
-                    GameObject.FindGameObjectWithTag("ReadyButton").GetComponent<Button>().interactable = true;
+                    readyButton.SetActive(true);
+                    break;
                 }
             }
         }
         else
         {
-            GameObject.FindGameObjectWithTag("ReadyButton").GetComponent<Button>().interactable = true;
+            readyButton.SetActive(true);
+        }
+
+        if(BothPlayerReady())
+        {
+            PhotonNetwork.LoadLevel("chapter1-Multi");
         }
     }
 
     private bool PlayersHaveSameType()
     {
-        if(PhotonNetwork.CountOfPlayers != 2)
+        if(PhotonNetwork.CurrentRoom.PlayerCount != 2)
         {
             return false;
         }
-        GameObject[] playerChoosePref = GameObject.FindGameObjectsWithTag("PlayerChoosePref");
-        return (playerChoosePref[0].transform.Find("Sheild").gameObject.activeSelf == true && playerChoosePref[1].transform.Find("Sheild").gameObject.activeSelf == true) 
-            || (playerChoosePref[0].transform.Find("Gun").gameObject.activeSelf == true && playerChoosePref[1].transform.Find("Gun").gameObject.activeSelf == true);
+        return (playerChoosePrefs[0].GetComponent<PlayerChoosePrefManager>().playerType == playerChoosePrefs[1].GetComponent<PlayerChoosePrefManager>().playerType);
+    }
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        SceneManager.LoadScene("Disconnect");
+    }
+    
+    private bool BothPlayerReady()
+    {
+        if(PhotonNetwork.CurrentRoom.PlayerCount != 2)
+        {
+            return false;
+        }
+        return playerChoosePrefs[0].transform.Find("Ready").gameObject.GetComponent<Text>().enabled && playerChoosePrefs[1].transform.Find("Ready").gameObject.GetComponent<Text>().enabled;
     }
 }

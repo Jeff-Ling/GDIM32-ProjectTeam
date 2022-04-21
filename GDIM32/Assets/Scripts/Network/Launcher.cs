@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
@@ -75,5 +76,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         GameObject gunPlayer = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
         gunPlayer.GetComponent<PlayerManager>().Enable = false;
+    }
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        SceneManager.LoadScene("Disconnect");
     }
 }

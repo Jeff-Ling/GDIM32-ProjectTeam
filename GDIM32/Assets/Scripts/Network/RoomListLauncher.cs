@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoomListLauncher : MonoBehaviourPunCallbacks
 {
@@ -13,7 +14,6 @@ public class RoomListLauncher : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.Disconnect();
         PhotonNetwork.ConnectUsingSettings();
     }
     public override void OnConnectedToMaster()
@@ -27,13 +27,12 @@ public class RoomListLauncher : MonoBehaviourPunCallbacks
         if(roomName.text.Length < 2)
         {
             return;
-        }
-        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
-        PhotonNetwork.JoinOrCreateRoom(roomName.text, options, default);
+        }        
+        PlayerPrefs.SetString("RoomName", roomName.text);
+        SceneManager.LoadScene("WaitRoom");
     }
-
-    public override void OnJoinedRoom()
-    {       
-        PhotonNetwork.LoadLevel(9);
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        SceneManager.LoadScene("Disconnect");
     }
 }

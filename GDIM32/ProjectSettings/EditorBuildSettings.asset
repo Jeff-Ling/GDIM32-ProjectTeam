@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaitRoom.unity
     guid: 67fc3fbc68fef6146b96fe0314878c7d
+  - enabled: 1
+    path: Assets/Scenes/Disconnect.unity
+    guid: 2f85ebc0e0033be4bada95c354b0ff45
   m_configObjects: {}

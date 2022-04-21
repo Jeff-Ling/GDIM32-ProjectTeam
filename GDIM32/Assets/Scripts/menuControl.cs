@@ -55,7 +55,10 @@ public class menuControl : MonoBehaviour
 
     public void returnButton()
     {
-        PhotonNetwork.Disconnect();
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
+        }
         SceneManager.LoadScene("Menu");
     }
 
