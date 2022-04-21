@@ -14,7 +14,10 @@ public class WaitRoomManager : MonoBehaviourPunCallbacks
     private GameObject playerChoosePref;
     private GameObject[] playerChoosePrefs;
 
-
+    void Awake()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
     public void Start()
     {
         RoomOptions options = new RoomOptions { MaxPlayers = 2 };
@@ -132,7 +135,7 @@ public class WaitRoomManager : MonoBehaviourPunCallbacks
             readyButton.SetActive(true);
         }
 
-        if(BothPlayerReady())
+        if(BothPlayerReady() && PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.LoadLevel("chapter1-Multi");
         }
