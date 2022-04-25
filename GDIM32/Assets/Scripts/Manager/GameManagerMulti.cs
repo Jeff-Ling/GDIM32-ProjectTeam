@@ -1,49 +1,129 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
-public class GameManagerMulti : Singleton<GameManagerMulti>
+public class GameManagerMulti : MonoBehaviourPunCallbacks
 {
-    private bool gameStart = false;
+    //[TextArea]
+    [SerializeField] private string[] prologue;
+    [SerializeField] private float prologuePlayInterval = 1f;
+    [SerializeField] private string nextLevel;
+    private UIManager uiManager;
+    private GameObject[] players;
+    private int playerNo;
 
-    public int CheckPlayerNumbers()
-    {
-        return GameObject.FindGameObjectsWithTag("Player").Length;
-    }
     void Start()
     {
-        StartCoroutine(WaitForPlayers());
+        uiManager = GetComponent<UIManager>();
+        StartCoroutine(GameFlow());
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual IEnumerator GameFlow()
     {
-        if(!gameStart)
+        yield return StartCoroutine(InstantiatePlayer());
+        yield return StartCoroutine(ShowScene());
+        yield return StartCoroutine(Prologue());
+        yield return StartCoroutine(GamePlaying());
+        yield return StartCoroutine(GameEnd());
+    }
+
+    private IEnumerator InstantiatePlayer()
+    {
+        Debug.Log(1);
+        if (PhotonNetwork.IsMasterClient)
         {
-            if(CheckPlayerNumbers() == 2)
-            {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                players[0].GetComponent<PlayerManager>().Enable = true;
-                players[1].GetComponent<PlayerManager>().Enable = true;
-                UIManager.Instance.CloseLoadingUI();
-                gameStart = true;
-            }
+            playerNo = 0;
         }
+        else
+        {
+            playerNo = 1;
+        }
+        InstantiatePlayer(PlayerPrefs.GetString("PlayerType"));
+        players = GameObject.FindGameObjectsWithTag("Player");
+        while (players.Length != 2)
+        {
+            players = GameObject.FindGameObjectsWithTag("Player");
+            yield return null;
+        }      
     }
-
-    private IEnumerator WaitForPlayers()
+    private IEnumerator ShowScene()
     {
-        while(CheckPlayerNumbers() != 2)
+        Debug.Log(2);
+        UIManager.Instance.CloseLoadingUI();
+        yield return null;
+    }
+    private IEnumerator Prologue()
+    {
+        Debug.Log(3);
+        int i = 0;
+        while (i < prologue.Length)
+        {
+            uiManager.ShowPrologue(prologue[i]);
+            yield return new WaitForSeconds(prologuePlayInterval);
+            i++;
+        }
+        uiManager.ClosePrologue();
+    }
+    private IEnumerator GamePlaying()
+    {
+        Debug.Log(4);
+        players[0].GetComponent<PlayerManager>().Enable = true;
+        players[1].GetComponent<PlayerManager>().Enable = true;
+        while (!WinCondition() && !LoseCondition())
         {
             yield return null;
         }
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        players[0].GetComponent<PlayerManager>().Enable = true;
-        players[1].GetComponent<PlayerManager>().Enable = true;
-        Transform[] playersTransform = new Transform[2];
-        playersTransform[0] = players[0].transform;
-        playersTransform[1] = players[1].transform;
-        CameraControl.Instance.m_Targets = playersTransform;
-        UIManager.Instance.CloseLoadingUI();
+    }
+    private IEnumerator GameEnd()
+    {
+        if(WinCondition())
+        {
+            PhotonNetwork.LoadLevel(nextLevel);
+            yield return null;
+        }
+        if(LoseCondition())
+        {
+            if(PhotonNetwork.IsMasterClient)
+            {
+                uiManager.ShowRetryUI();
+            }
+            else
+            {
+                uiManager.ShowWaitForMasterChooseUI();
+            }
+        }
+    }
+    private void InstantiatePlayer(string type)
+    {
+        if (type == "Gun")
+        {
+            players[playerNo] = PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
+            players[playerNo].GetComponent<PlayerManager>().Enable = false;
+        }
+        if(type == "Sheild")
+        {
+            players[playerNo] = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
+            players[playerNo].GetComponent<PlayerManager>().Enable = false;
+        }
+    }
+    protected virtual bool WinCondition()
+    {
+        return false;
+    }
+    protected virtual bool LoseCondition()
+    {
+        return players[0].GetComponent<PlayerStats>().IsDead || players[1].GetComponent<PlayerStats>().IsDead;
+    }
+    public void RetryButton()
+    {
+        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().ToString());
+    }
+    public void QuitButton()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Menu");        
     }
 }
