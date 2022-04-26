@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - GameManagerMulti
     - InputManager
     - Launcher
+    - OnlineCameraControl
     - PlayerBehaviour
     - PlayerChoosePrefManager
     - PlayerHealth
@@ -55,6 +56,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -482,6 +484,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10308}
     - Class: 114
       Script: {instanceID: 10634}
+    - Class: 114
+      Script: {instanceID: 67166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -3676,6 +3680,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 753f8b5667d0bbd5c0cc5274f29ef59f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OnlineCameraControl
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity

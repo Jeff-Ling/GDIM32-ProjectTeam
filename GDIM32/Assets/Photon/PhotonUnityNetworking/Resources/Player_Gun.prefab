@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7389566502640673258}
   - component: {fileID: 3072980730490427874}
   - component: {fileID: 5228059673581067202}
+  - component: {fileID: -1658813085844834422}
   m_Layer: 0
   m_Name: Player_Gun
   m_TagString: Player
@@ -170,6 +171,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-1658813085844834422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389566502640673263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6291c22ecbaa69b41ae063d975b0256b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followOnStart: 0
 --- !u!1 &7389566502790270551
 GameObject:
   m_ObjectHideFlags: 0

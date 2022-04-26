@@ -7,7 +7,7 @@ public class OnlineCameraControl : MonoBehaviour
     #region Private Fields
 
 
-    private Vector3 offset = new Vector3(-20, 20, -12);
+    private Vector3 offset = new Vector3(0,-12f,0);
     private float moveSpeed = 3;
     [Tooltip("Set this as false if a component of a prefab being instanciated by Photon Network, and manually call OnStartFollowing() when and if needed.")]
     [SerializeField] private bool followOnStart = false;
@@ -71,7 +71,7 @@ public class OnlineCameraControl : MonoBehaviour
     /// </summary>
     public void OnStartFollowing()
     {
-        cameraTransform = Camera.main.transform;
+        cameraTransform = Camera.main.transform.parent.transform;
         isFollowing = true;
         // we don't smooth anything, we go straight to the right camera shot
         Cut();

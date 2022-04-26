@@ -16,6 +16,21 @@ public class PlayerManager : MonoBehaviourPun
     }
     void Start()
     {
+        OnlineCameraControl cameraControl = this.gameObject.GetComponent<OnlineCameraControl>();
+
+
+        if (cameraControl != null)
+        {
+            if (photonView.IsMine)
+            {
+                cameraControl.OnStartFollowing();
+            }
+        }
+        else
+        {
+            Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
+        }
+
         stats = GetComponent<PlayerStats>();
         behaviour = GetComponent<PlayerBehaviour>();
         inputManager = InputManager.Instance;
