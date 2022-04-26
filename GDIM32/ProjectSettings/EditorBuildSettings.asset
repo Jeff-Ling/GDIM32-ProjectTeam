@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Disconnect.unity
     guid: 2f85ebc0e0033be4bada95c354b0ff45
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 3f9406df6846751418c513db5752b605
   m_configObjects: {}

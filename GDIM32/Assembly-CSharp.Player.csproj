@@ -66,7 +66,7 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerChoosePrefManager.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\World_Mesh.cs" />
-    <Compile Include="Assets\Scripts\Network\WaitRoomManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\WaitRoomManager.cs" />
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_IActiveInactive.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
@@ -174,6 +174,7 @@
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransformBody.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\Shoot_Flash.cs" />
+    <Compile Include="Assets\Scripts\Camera\OnlineCameraControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -423,6 +424,9 @@
     <Reference Include="PhotonUnityNetworking.Editor">
       <HintPath>Library\ScriptAssemblies\PhotonUnityNetworking.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor">
+      <HintPath>Library\ScriptAssemblies\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Path.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
@@ -452,6 +456,9 @@
     </Reference>
     <Reference Include="PunDemos.DemoSlotcarEditor">
       <HintPath>Library\ScriptAssemblies\PunDemos.DemoSlotcarEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking.Utilities.Culling.Editor">
+      <HintPath>Library\ScriptAssemblies\PhotonUnityNetworking.Utilities.Culling.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
@@ -509,12 +516,6 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor">
-      <HintPath>Library\ScriptAssemblies\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="PhotonUnityNetworking.Utilities.Culling.Editor">
-      <HintPath>Library\ScriptAssemblies\PhotonUnityNetworking.Utilities.Culling.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
@@ -973,6 +974,10 @@
       <Project>{B73B83D0-21CA-1A9F-9A05-2027DAF9ACEB}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{E5C2FBB3-1860-1DAD-EB03-D070EE459086}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{EC01C765-336A-EC5F-DB45-527B66574E37}</Project>
       <Name>Unity.Mathematics</Name>
@@ -1008,10 +1013,6 @@
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
       <Project>{8392BBA8-8ABD-F6AC-3014-4A02C1812191}</Project>
       <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{E5C2FBB3-1860-1DAD-EB03-D070EE459086}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

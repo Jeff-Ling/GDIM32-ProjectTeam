@@ -8,16 +8,22 @@ using UnityEngine.SceneManagement;
 
 public class RoomListLauncher : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private string gameVersion = "1";
     [SerializeField] private GameObject roomInfo;
     [SerializeField] private GameObject connectingUI;
     [SerializeField] private Text roomName;
 
     private void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.GameVersion = gameVersion;
+        }
     }
     public override void OnConnectedToMaster()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         roomInfo.SetActive(true);
         connectingUI.SetActive(false);
         PhotonNetwork.JoinLobby();
@@ -29,7 +35,8 @@ public class RoomListLauncher : MonoBehaviourPunCallbacks
             return;
         }        
         PlayerPrefs.SetString("RoomName", roomName.text);
-        SceneManager.LoadScene("WaitRoom");
+        PhotonNetwork.LoadLevel("WaitRoom");
+        //SceneManager.LoadScene("WaitRoom");
     }
     public override void OnDisconnected(DisconnectCause cause)
     {

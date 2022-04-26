@@ -32,7 +32,7 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
 
     private IEnumerator InstantiatePlayer()
     {
-        Debug.Log(1);
+        Debug.Log(PlayerPrefs.GetString("PlayerType"));
         if (PhotonNetwork.IsMasterClient)
         {
             playerNo = 0;
