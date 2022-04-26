@@ -32,14 +32,14 @@ public class Menu : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
         pauseUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Reload()

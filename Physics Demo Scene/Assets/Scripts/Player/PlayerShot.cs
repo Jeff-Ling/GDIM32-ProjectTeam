@@ -6,8 +6,8 @@ public class PlayerShot : MonoBehaviour
 {
     public GameObject bullet;
     public Transform shotPosition;
-    public Transform frontSight;
     public float shotRange = 100;
+    public Vector3 mousePosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,7 @@ public class PlayerShot : MonoBehaviour
 
     public void Shot()
     {
-        Instantiate(bullet, shotPosition.position, shotPosition.rotation).GetComponent<Rigidbody>().AddForce((frontSight.position - this.transform.position) * shotRange, ForceMode.VelocityChange);
+        //Instantiate(bullet, mousePosition, Quaternion.identity);
+        Instantiate(bullet, shotPosition.position, shotPosition.rotation).GetComponent<Rigidbody>().AddForce(this.transform.forward * shotRange, ForceMode.VelocityChange);
     }
 }
