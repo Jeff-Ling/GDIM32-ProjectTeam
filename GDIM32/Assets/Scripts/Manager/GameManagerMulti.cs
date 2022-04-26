@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerMulti : MonoBehaviourPunCallbacks
 {
-    //[TextArea]
+    [TextArea]
     [SerializeField] private string[] prologue;
     [SerializeField] private float prologuePlayInterval = 1f;
     [SerializeField] private string nextLevel;

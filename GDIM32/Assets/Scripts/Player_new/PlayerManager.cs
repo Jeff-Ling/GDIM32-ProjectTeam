@@ -43,5 +43,6 @@ public class PlayerManager : MonoBehaviourPun
         if (stats.IsDead) { return; }
         if (!enable) { return; }
         behaviour.Move(inputManager.MoveInput());
+        behaviour.Turn();
     }
 }
