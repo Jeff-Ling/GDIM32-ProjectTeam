@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 2893608741352388299}
   m_Layer: 0
   m_Name: Player_Gun
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_MoveSpeed: 350
   m_MaxHP: 100
   m_Type: 0
+  m_CurrentHP: 0
   bulletSpeed: 10
   m_Slider: {fileID: 0}
   m_FillImage: {fileID: 0}

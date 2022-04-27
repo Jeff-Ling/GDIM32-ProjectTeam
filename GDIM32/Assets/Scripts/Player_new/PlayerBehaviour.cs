@@ -110,7 +110,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Move(Vector3 inputVec)
     {
-        Debug.Log("Move");
         m_Rigidbody.velocity = inputVec * stats.MoveSpeed * Time.deltaTime;
     }
 
@@ -119,7 +118,6 @@ public class PlayerBehaviour : MonoBehaviour
         //float turn = - (m_TurnInputValue * m_TurnSpeed * Time.deltaTime);
         //transform.Rotate(Vector3.forward * turn);        
         Vector3 mousePoint = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
-        Debug.Log(mousePoint);
         Vector3 dir = (mousePoint - transform.position);
         dir = new Vector3(dir.x, dir.y, 0f).normalized;
         float theta = Mathf.Atan(dir.y / dir.x) * Mathf.Rad2Deg;

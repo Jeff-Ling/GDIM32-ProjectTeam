@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerManager : MonoBehaviourPun
+public class PlayerManager : MonoBehaviourPun, IPunObservable
 {
     private PlayerStats stats;
     private PlayerBehaviour behaviour;
     private InputManager inputManager;
     private bool enable = true;
     private bool canInteract = true;
+    private Vector3 moveInput;
     public bool Enable
     {
         get { return enable; }
@@ -38,7 +39,9 @@ public class PlayerManager : MonoBehaviourPun
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        Debug.Log(canInteract);
+        Debug.Log("enable" + enable);       
         if (!photonView.IsMine && PhotonNetwork.IsConnected) 
         {
             canInteract = false;
@@ -54,7 +57,7 @@ public class PlayerManager : MonoBehaviourPun
             canInteract = false;
             return; 
         }
-
+        moveInput = inputManager.MoveInput();
         canInteract = true;
         behaviour.Fire(inputManager.ShootInput());
     }
@@ -62,7 +65,23 @@ public class PlayerManager : MonoBehaviourPun
     private void FixedUpdate()
     {
         if (!canInteract) { return; }
-        behaviour.Move(inputManager.MoveInput());
+        behaviour.Move(moveInput);
         behaviour.Turn();
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(stats.CurrentHP);
+            stream.SendNext(enable);
+        }
+        else
+        {
+            // Network player, receive data
+            this.stats.CurrentHP = (float)stream.ReceiveNext();
+            enable = (bool)stream.ReceiveNext();
+        }
     }
 }

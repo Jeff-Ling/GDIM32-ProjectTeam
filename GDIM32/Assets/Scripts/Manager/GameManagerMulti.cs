@@ -46,17 +46,17 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
         {
             players = GameObject.FindGameObjectsWithTag("Player");
             yield return null;
-        }      
+        }
+        players[0].GetComponent<PlayerManager>().Enable = false;
+        players[1].GetComponent<PlayerManager>().Enable = false;
     }
     private IEnumerator ShowScene()
     {
-        Debug.Log(2);
         UIManager.Instance.CloseLoadingUI();
         yield return null;
     }
     private IEnumerator Prologue()
     {
-        Debug.Log(3);
         int i = 0;
         while (i < prologue.Length)
         {
@@ -68,7 +68,6 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     }
     private IEnumerator GamePlaying()
     {
-        Debug.Log(4);
         players[0].GetComponent<PlayerManager>().Enable = true;
         players[1].GetComponent<PlayerManager>().Enable = true;
         while (!WinCondition() && !LoseCondition())
@@ -101,13 +100,11 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Instantiate("PlayerFOV_Gun", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
             players[playerNo] = PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
-            players[playerNo].GetComponent<PlayerManager>().Enable = false;
         }
         if(type == "Sheild")
         {
             PhotonNetwork.Instantiate("PlayerFOV_Sheild", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
             players[playerNo] = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
-            players[playerNo].GetComponent<PlayerManager>().Enable = false;
         }
     }
     protected virtual bool WinCondition()
