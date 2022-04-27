@@ -15,8 +15,6 @@ public class PlayerStats : MonoBehaviour
 
     public float bulletSpeed = 10.0f;
 
-    public float m_Speed = 12f;
-
     public Slider m_Slider;
     public Image m_FillImage;
     public Color m_FullHealthColor = Color.green;

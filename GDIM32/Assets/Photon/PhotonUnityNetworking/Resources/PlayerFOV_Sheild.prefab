@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2661892571644085634}
   - component: {fileID: -378331605619104827}
   m_Layer: 6
-  m_Name: PlayerFOV
-  m_TagString: Untagged
+  m_Name: PlayerFOV_Sheild
+  m_TagString: FOV_Sheild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 2661892571644085634}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

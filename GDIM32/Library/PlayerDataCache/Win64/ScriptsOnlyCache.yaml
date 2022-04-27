@@ -3376,7 +3376,7 @@ ScriptsOnlyBuild:
     className: UniversalAdditionalLightData
   - hash:
       serializedVersion: 2
-      Hash: 4519114f43b1ec1b325e5e249ff40cac
+      Hash: 2c040b9dcabe8867758f2ef6acc0d6dc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerBehaviour
@@ -3508,7 +3508,7 @@ ScriptsOnlyBuild:
     className: PlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 910afe2f4697a4f3cd93e3f5151de3dd
+      Hash: c5c5797dc6ca1773742786b3bcf0ff5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerStats

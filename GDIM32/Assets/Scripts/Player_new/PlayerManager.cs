@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviourPun
     {
         OnlineCameraControl cameraControl = this.gameObject.GetComponent<OnlineCameraControl>();
 
-
         if (cameraControl != null)
         {
             if (photonView.IsMine)

@@ -16,7 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     #region Var: Movement
     [Header("Movement System")]
-    [SerializeField] private FOV Fov;
+    private FOV Fov;
     public Transform currentFacing;      // Current Direction that Player is facing (used for FOV)
 
     private Rigidbody2D m_Rigidbody;
@@ -35,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
+        stats = GetComponent<PlayerStats>();    
     }
 
     private void OnEnable()
@@ -52,6 +53,14 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(stats.Type == PlayerStats.PlayerType.Sheild)
+        {
+            Fov = GameObject.FindGameObjectWithTag("FOV_Sheild").GetComponent<FOV>();
+        }
+        else
+        {
+            Fov = GameObject.FindGameObjectWithTag("FOV_Gun").GetComponent<FOV>();
+        }
         Vector3 targetPosition = currentFacing.position;
         Vector3 aimDir = (targetPosition - transform.position).normalized;
         Vector3 origin = transform.position;
@@ -101,15 +110,16 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Move(Vector3 inputVec)
     {
-        m_Rigidbody.velocity = inputVec * stats.m_Speed * Time.deltaTime;
+        Debug.Log("Move");
+        m_Rigidbody.velocity = inputVec * stats.MoveSpeed * Time.deltaTime;
     }
 
     public void Turn()
     {
         //float turn = - (m_TurnInputValue * m_TurnSpeed * Time.deltaTime);
-        //transform.Rotate(Vector3.forward * turn);
-
+        //transform.Rotate(Vector3.forward * turn);        
         Vector3 mousePoint = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+        Debug.Log(mousePoint);
         Vector3 dir = (mousePoint - transform.position);
         dir = new Vector3(dir.x, dir.y, 0f).normalized;
         float theta = Mathf.Atan(dir.y / dir.x) * Mathf.Rad2Deg;

@@ -32,7 +32,6 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
 
     private IEnumerator InstantiatePlayer()
     {
-        Debug.Log(PlayerPrefs.GetString("PlayerType"));
         if (PhotonNetwork.IsMasterClient)
         {
             playerNo = 0;
@@ -100,11 +99,13 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     {
         if (type == "Gun")
         {
+            PhotonNetwork.Instantiate("PlayerFOV_Gun", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
             players[playerNo] = PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
             players[playerNo].GetComponent<PlayerManager>().Enable = false;
         }
         if(type == "Sheild")
         {
+            PhotonNetwork.Instantiate("PlayerFOV_Sheild", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
             players[playerNo] = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
             players[playerNo].GetComponent<PlayerManager>().Enable = false;
         }
