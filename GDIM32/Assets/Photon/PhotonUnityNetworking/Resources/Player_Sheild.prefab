@@ -436,7 +436,6 @@ MonoBehaviour:
   m_MoveSpeed: 350
   m_MaxHP: 100
   m_Type: 1
-  m_CurrentHP: 0
   bulletSpeed: 10
   m_Slider: {fileID: 0}
   m_FillImage: {fileID: 0}
@@ -469,6 +468,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 3969325931376277387}
   - {fileID: 5855521834278188929}
   sceneViewId: 0
   InstantiationId: 0

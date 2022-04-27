@@ -12,8 +12,7 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     [SerializeField] private float prologuePlayInterval = 1f;
     [SerializeField] private string nextLevel;
     private UIManager uiManager;
-    private GameObject[] players;
-    private int playerNo;
+    private GameObject[] players = new GameObject[2];
 
     void Start()
     {
@@ -32,26 +31,25 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
 
     private IEnumerator InstantiatePlayer()
     {
-        if (PhotonNetwork.IsMasterClient)
+        InstantiatePlayer(PlayerPrefs.GetString("PlayerType"));       
+        while (!GameObject.FindGameObjectWithTag("Player1"))
         {
-            playerNo = 0;
-        }
-        else
-        {
-            playerNo = 1;
-        }
-        InstantiatePlayer(PlayerPrefs.GetString("PlayerType"));
-        players = GameObject.FindGameObjectsWithTag("Player");
-        while (players.Length != 2)
-        {
-            players = GameObject.FindGameObjectsWithTag("Player");
             yield return null;
         }
+        players[0] = GameObject.FindGameObjectWithTag("Player1");
+        Debug.Log(1);
+        while (!GameObject.FindGameObjectWithTag("Player2"))
+        {
+            yield return null;
+        }
+        players[1] = GameObject.FindGameObjectWithTag("Player2");
+        Debug.Log(2);
         players[0].GetComponent<PlayerManager>().Enable = false;
         players[1].GetComponent<PlayerManager>().Enable = false;
     }
     private IEnumerator ShowScene()
     {
+        Debug.Log(3);
         UIManager.Instance.CloseLoadingUI();
         yield return null;
     }
@@ -99,12 +97,12 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
         if (type == "Gun")
         {
             PhotonNetwork.Instantiate("PlayerFOV_Gun", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
-            players[playerNo] = PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
+            PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
         }
         if(type == "Sheild")
         {
             PhotonNetwork.Instantiate("PlayerFOV_Sheild", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
-            players[playerNo] = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0) as GameObject;
+            PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
         }
     }
     protected virtual bool WinCondition()

@@ -75,13 +75,11 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
         {
             // We own this player: send the others our data
             stream.SendNext(stats.CurrentHP);
-            stream.SendNext(enable);
         }
         else
         {
             // Network player, receive data
             this.stats.CurrentHP = (float)stream.ReceiveNext();
-            enable = (bool)stream.ReceiveNext();
         }
     }
 }

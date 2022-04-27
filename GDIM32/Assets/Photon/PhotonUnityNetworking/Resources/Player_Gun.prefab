@@ -142,7 +142,6 @@ MonoBehaviour:
   m_MoveSpeed: 350
   m_MaxHP: 100
   m_Type: 0
-  m_CurrentHP: 0
   bulletSpeed: 10
   m_Slider: {fileID: 0}
   m_FillImage: {fileID: 0}

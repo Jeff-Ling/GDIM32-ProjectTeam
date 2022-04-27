@@ -44,6 +44,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -3506,7 +3508,7 @@ ScriptsOnlyBuild:
     className: PlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 2a32037117b31690640c37a349a3de9c
+      Hash: c5c5797dc6ca1773742786b3bcf0ff5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerStats
