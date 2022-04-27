@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -13,6 +12,17 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float m_MaxHP;
     [SerializeField] private PlayerType m_Type;
     private float m_CurrentHP;
+
+    public float bulletSpeed = 10.0f;
+
+    public float m_Speed = 12f;
+
+    public Slider m_Slider;
+    public Image m_FillImage;
+    public Color m_FullHealthColor = Color.green;
+    public Color m_ZeroHealthColor = Color.red;
+
+    private bool m_Dead;
 
     #region Public interface
     public PlayerType Type
@@ -43,5 +53,60 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         m_CurrentHP = m_MaxHP;
+    }
+
+    // Audio Component
+    public AudioSource AS;
+    public AudioClip[] Death_AudioClip;
+
+    private void OnEnable()
+    {
+        m_CurrentHP = m_MaxHP;
+        m_Dead = false;
+
+        SetHealthUI();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        m_CurrentHP -= damage;
+
+        SetHealthUI();
+
+
+        // When health is under 0 and m_Dead is false
+        if (m_CurrentHP <= 0f && !m_Dead)
+        {
+            m_Dead = true;
+
+            // Play the clip
+            int random_clip = Random.Range(0, Death_AudioClip.Length);
+            AS.clip = Death_AudioClip[random_clip];
+            AS.Play();
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void GetHeal(float heal)
+    {
+        m_CurrentHP += heal;
+
+        if (m_CurrentHP > m_MaxHP)
+        {
+            m_CurrentHP = m_MaxHP;
+        }
+
+        SetHealthUI();
+    }
+
+    private void SetHealthUI()
+    {
+        // Adjust the value and colour of the slider.
+        // Set the slider's value appropriately.
+        m_Slider.value = m_CurrentHP;
+
+        // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
+        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHP / m_MaxHP);
     }
 }

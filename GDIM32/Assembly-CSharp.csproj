@@ -103,6 +103,7 @@
     <Compile Include="Assets\Imported\_\Base\BaseScripts\Player_Base.cs" />
     <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\MapPos.cs" />
     <Compile Include="Assets\Scripts\menuControl.cs" />
+    <Compile Include="Assets\Scripts\Camera\OnlineCameraControl.cs" />
     <Compile Include="Assets\Imported\_\Stuff\GridPathfinding\PathQueue.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\UVVectors.cs" />
     <Compile Include="Assets\Scripts\UI\RoomListManager.cs" />
@@ -174,7 +175,6 @@
     <Compile Include="Assets\Imported\_\Stuff\V_ObjectSystem\V_ObjectTransformBody.cs" />
     <Compile Include="Assets\Imported\_\Stuff\CodeMonkey\Utils\FunctionPeriodic.cs" />
     <Compile Include="Assets\Imported\_\Stuff\Scripts\Shoot_Flash.cs" />
-    <Compile Include="Assets\Scripts\Camera\OnlineCameraControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

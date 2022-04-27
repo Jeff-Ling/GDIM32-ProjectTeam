@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Move_Down_Key: 115
   m_Move_Left_Key: 97
   m_Move_Right_Key: 100
+  m_LeftMouse_Key: 323
 --- !u!4 &708282957
 Transform:
   m_ObjectHideFlags: 0

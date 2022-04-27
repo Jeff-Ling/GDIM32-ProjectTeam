@@ -8,6 +8,7 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private KeyCode m_Move_Down_Key = KeyCode.S;
     [SerializeField] private KeyCode m_Move_Left_Key = KeyCode.A;
     [SerializeField] private KeyCode m_Move_Right_Key = KeyCode.D;
+    [SerializeField] private KeyCode m_LeftMouse_Key = KeyCode.Mouse0;
 
     #region Public interface for player manager
     public Vector3 MoveInput()
@@ -30,12 +31,17 @@ public class InputManager : Singleton<InputManager>
         {
             vert -= 1f;
         }
-        if(hori != 0 && vert != 0)
+        if (hori != 0 && vert != 0)
         {
             hori *= 0.7f;
             vert *= 0.7f;
         }
         return new Vector3(hori, vert, 0);
+    }
+
+    public bool ShootInput()
+    {
+        return Input.GetKeyDown(m_LeftMouse_Key);
     }
     #endregion
 

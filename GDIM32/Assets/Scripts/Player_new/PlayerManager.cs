@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviourPun
     private PlayerBehaviour behaviour;
     private InputManager inputManager;
     private bool enable = true;
+    private bool canInteract = true;
     public bool Enable
     {
         get { return enable; }
@@ -38,10 +39,30 @@ public class PlayerManager : MonoBehaviourPun
 
     // Update is called once per frame
     void Update()
+    {        
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) 
+        {
+            canInteract = false;
+            return; 
+        }
+        if (stats.IsDead) 
+        {
+            canInteract = false;
+            return; 
+        }
+        if (!enable) 
+        {
+            canInteract = false;
+            return; 
+        }
+
+        canInteract = true;
+        behaviour.Fire(inputManager.ShootInput());
+    }
+
+    private void FixedUpdate()
     {
-        if(!photonView.IsMine && PhotonNetwork.IsConnected) { return; }
-        if (stats.IsDead) { return; }
-        if (!enable) { return; }
+        if (!canInteract) { return; }
         behaviour.Move(inputManager.MoveInput());
         behaviour.Turn();
     }
