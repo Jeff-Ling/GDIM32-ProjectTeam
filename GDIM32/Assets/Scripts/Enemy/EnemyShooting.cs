@@ -42,7 +42,7 @@ public class EnemyShooting : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         // Enemy see Players
-        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
             // Send target information
             enemyMovement.GetTarget(collision.transform.position);
@@ -52,7 +52,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
             enemyMovement.GetTarget(collision.transform.position);
             enemyMovement.ChangeState(EnemyMovement.Status.CHASE);

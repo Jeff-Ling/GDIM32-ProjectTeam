@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerManager : MonoBehaviourPun, IPunObservable
+public class PlayerManager : MonoBehaviourPun
 {
     private PlayerStats stats;
     private PlayerBehaviour behaviour;
@@ -53,6 +53,7 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
         }
         moveInput = inputManager.MoveInput();
         canInteract = true;
+        //this.GetComponent<PhotonView>().RPC("Fire", RpcTarget.All,inputManager.ShootInput());
         behaviour.Fire(inputManager.ShootInput());
     }
 
@@ -61,20 +62,6 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
         if (!canInteract) { return; }
         behaviour.Move(moveInput);
         behaviour.Turn();
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            // We own this player: send the others our data
-            stream.SendNext(stats.CurrentHP);
-        }
-        else
-        {
-            // Network player, receive data
-            this.stats.CurrentHP = (float)stream.ReceiveNext();
-        }
     }
 
     [PunRPC] 

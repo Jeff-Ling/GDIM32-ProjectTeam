@@ -41,6 +41,12 @@ MonoBehaviour:
   - RespawnSpaceship
   - GameFlow
   - SetActive
+  - Dead
+  - SetHealthUI
+  - GetHeal
+  - TakeDamage
+  - SetBulletTag
+  - SetBulletVolecity
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

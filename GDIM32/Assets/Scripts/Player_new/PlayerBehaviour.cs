@@ -91,14 +91,18 @@ public class PlayerBehaviour : MonoBehaviour
         if (fire_curTime - fire_lastTime < fire_break) { return; }
         // m_Fired = true;
 
-        Rigidbody2D shellInstance =
-            PhotonNetwork.Instantiate("Bullet", m_FireTransform.position, m_FireTransform.rotation).GetComponent<Rigidbody2D>();
-
-        // set the velocity
-        shellInstance.velocity = stats.bulletSpeed * m_FireTransform.right;
-
-        // set the tag
-        shellInstance.tag = this.tag;
+        if (this.transform.tag == "Player1")
+        {
+            GameObject bullet = PhotonNetwork.Instantiate("Bullet_Sheild", m_FireTransform.position, m_FireTransform.rotation);
+            //bullet.GetComponent<PhotonView>().RPC("SetBulletVolecity", RpcTarget.All, stats.bulletSpeed * m_FireTransform.right);
+            bullet.GetComponent<Rigidbody2D>().velocity = stats.bulletSpeed * m_FireTransform.right;
+        }
+        if (this.transform.tag == "Player2")
+        {
+            GameObject bullet = PhotonNetwork.Instantiate("Bullet_Gun", m_FireTransform.position, m_FireTransform.rotation);
+            //bullet.GetComponent<PhotonView>().RPC("SetBulletVolecity", RpcTarget.All, stats.bulletSpeed * m_FireTransform.right);
+            bullet.GetComponent<Rigidbody2D>().velocity = stats.bulletSpeed * m_FireTransform.right;
+        }
 
         // Play the clip
         ShootAS.clip = Fire_AudioClip;

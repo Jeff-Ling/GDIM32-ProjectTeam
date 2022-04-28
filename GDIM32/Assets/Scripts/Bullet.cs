@@ -14,10 +14,12 @@ public class Bullet : MonoBehaviour
 
     private AudioSource AS;
     public AudioClip HitOnWall;
+    private Rigidbody m_rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_rigidbody = GetComponent<Rigidbody>();
         AS = GameObject.Find("SoundSystem").GetComponent<AudioSource>();
         if (AS == null)
         {
@@ -33,15 +35,22 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag != this.tag)
         {
-            if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name.StartsWith("Enemy"))
-            {                
+            if (collision.gameObject.name.StartsWith("Enemy"))
+            {
 
-                PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+                //PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-                playerHealth.TakeDamage(Damage);
+                //playerHealth.TakeDamage(Damage);
+                collision.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, Damage);                
             }
 
-            if (collision.gameObject.name != "FOV" && !collision.gameObject.name.StartsWith("Bullet"))
+            if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+            {
+                //collision.GetComponent<PlayerStats>().TakeDamage(Damage);
+                collision.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, Damage);
+            }
+
+            if (collision.gameObject.tag != "FOV_Sheild" && collision.gameObject.tag != "FOV_Gun" && !collision.gameObject.name.StartsWith("Bullet"))
             {
                 PhotonNetwork.Destroy(gameObject);
             }
@@ -55,6 +64,6 @@ public class Bullet : MonoBehaviour
                 AS.Play();
             }
         }
-
     }
+
 }

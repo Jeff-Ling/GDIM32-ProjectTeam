@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
-
+using Photon.Pun;
 public class PlayerStats : MonoBehaviour
 {
     public enum PlayerType
@@ -62,42 +62,33 @@ public class PlayerStats : MonoBehaviour
         m_CurrentHP = m_MaxHP;
         m_Dead = false;
 
-        SetHealthUI();
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
     }
 
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         m_CurrentHP -= damage;
-
-        SetHealthUI();
-
-
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
         // When health is under 0 and m_Dead is false
         if (m_CurrentHP <= 0f && !m_Dead)
         {
-            m_Dead = true;
-
-            // Play the clip
-            int random_clip = Random.Range(0, Death_AudioClip.Length);
-            AS.clip = Death_AudioClip[random_clip];
-            AS.Play();
-
-            Destroy(this.gameObject);
+            this.GetComponent<PhotonView>().RPC("Dead", RpcTarget.All);
         }
     }
 
+    [PunRPC]
     public void GetHeal(float heal)
     {
-        m_CurrentHP += heal;
-
-        if (m_CurrentHP > m_MaxHP)
+        m_CurrentHP += heal;        
+        if (m_CurrentHP > 100f)
         {
-            m_CurrentHP = m_MaxHP;
+            m_CurrentHP = 100f;
         }
-
-        SetHealthUI();
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
     }
 
+    [PunRPC]
     private void SetHealthUI()
     {
         // Adjust the value and colour of the slider.
@@ -106,5 +97,17 @@ public class PlayerStats : MonoBehaviour
 
         // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
         m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHP / m_MaxHP);
+    }
+
+    [PunRPC]
+    private void Dead()
+    {
+        m_Dead = true;
+
+        // Play the clip
+        int random_clip = Random.Range(0, Death_AudioClip.Length);
+        AS.clip = Death_AudioClip[random_clip];
+        AS.Play();
+        Destroy(this.gameObject);
     }
 }

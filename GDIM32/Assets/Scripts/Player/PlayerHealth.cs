@@ -6,7 +6,7 @@ using Photon.Pun;
 // Author: Jiefu Ling (jieful2); Yuhao Song (yuhaos5)
 // This script is used to calculate player and enemies' health status.
 
-public class PlayerHealth : MonoBehaviourPun, IPunObservable
+public class PlayerHealth : MonoBehaviourPun
 {
     public float m_StartingHealth = 100f;
     public Slider m_Slider;
@@ -26,40 +26,33 @@ public class PlayerHealth : MonoBehaviourPun, IPunObservable
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
 
-        SetHealthUI();
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
     }
 
-    private void Update()
-    {
-        SetHealthUI();
-        if (m_Dead)
-        {
-            int random_clip = Random.Range(0, Death_AudioClip.Length);
-            AS.clip = Death_AudioClip[random_clip];
-            AS.Play();
-            Destroy(this.gameObject);
-        }
-    }
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         m_CurrentHealth -= damage;
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
         // When health is under 0 and m_Dead is false
         if (m_CurrentHealth <= 0f && !m_Dead)
         {
-            m_Dead = true;
+            this.GetComponent<PhotonView>().RPC("Dead", RpcTarget.All);
         }
     }
 
+    [PunRPC]
     public void GetHeal(float heal)
     {
         m_CurrentHealth += heal;
-
         if (m_CurrentHealth > 100f)
         {
             m_CurrentHealth = 100f;
-        }        
+        }
+        this.GetComponent<PhotonView>().RPC("SetHealthUI", RpcTarget.All);
     }
 
+    [PunRPC]
     private void SetHealthUI()
     {
         // Adjust the value and colour of the slider.
@@ -69,20 +62,14 @@ public class PlayerHealth : MonoBehaviourPun, IPunObservable
         // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
         m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    [PunRPC]
+    private void Dead()
     {
-        if (stream.IsWriting)
-        {
-            // We own this player: send the others our data
-            stream.SendNext(m_CurrentHealth);
-            stream.SendNext(m_Dead);
-        }
-        else
-        {
-            // Network player, receive data
-            this.m_CurrentHealth = (float)stream.ReceiveNext();
-            this.m_Dead =  (bool)stream.ReceiveNext();
-        }
+        m_Dead = true;
+        int random_clip = Random.Range(0, Death_AudioClip.Length);
+        AS.clip = Death_AudioClip[random_clip];
+        AS.Play();
+        Destroy(this.gameObject);
     }
+
 }

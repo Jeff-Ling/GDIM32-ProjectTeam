@@ -13,6 +13,7 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     [SerializeField] private string nextLevel;
     private UIManager uiManager;
     private GameObject player;
+    private GameObject[] players = new GameObject[2];
 
     void Start()
     {
@@ -32,10 +33,16 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     private IEnumerator InstantiatePlayer()
     {
         InstantiatePlayer(PlayerPrefs.GetString("PlayerType"));
-        while (!GameObject.FindGameObjectWithTag("Player1") || !GameObject.FindGameObjectWithTag("Player2"))
+        while (!GameObject.FindGameObjectWithTag("Player1"))
         {
             yield return null;
         }
+        players[0] = GameObject.FindGameObjectWithTag("Player1");
+        while (!GameObject.FindGameObjectWithTag("Player2"))
+        {
+            yield return null;
+        }
+        players[1] = GameObject.FindGameObjectWithTag("Player2");
     }
     private IEnumerator ShowScene()
     {
@@ -85,13 +92,13 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     {
         if (type == "Gun")
         {
-            player = PhotonNetwork.Instantiate("PlayerFOV_Gun", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
+            PhotonNetwork.Instantiate("PlayerFOV_Gun", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
+            player = PhotonNetwork.Instantiate("Player_Gun", new Vector3(4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
         }
         if(type == "Sheild")
         {
-            player = PhotonNetwork.Instantiate("PlayerFOV_Sheild", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
+            PhotonNetwork.Instantiate("PlayerFOV_Sheild", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0), 0);
+            player = PhotonNetwork.Instantiate("Player_Sheild", new Vector3(-4f, 0, 0), Quaternion.Euler(0, 0, 90), 0);
         }
         player.GetComponent<PhotonView>().RPC("SetActive", RpcTarget.All, false);
     }
@@ -101,7 +108,7 @@ public class GameManagerMulti : MonoBehaviourPunCallbacks
     }
     protected virtual bool LoseCondition()
     {
-        return false;
+        return players[0].GetComponent<PlayerStats>().IsDead || players[1].GetComponent<PlayerStats>().IsDead;
     }
     public void RetryButton()
     {

@@ -161,15 +161,10 @@ public class EnemyMovement : MonoBehaviourPun, IPunObservable
 
     private void Fire()
     {
-        Rigidbody2D shellInstance =
-            Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody2D;
-
-        // set the velocity
-        shellInstance.velocity = bulletSpeed * FireTransform.right;
-
-        // set the tag
-        shellInstance.tag = this.tag;
-
+        //Rigidbody2D shellInstance =
+        //Instantiate(bullet, FireTransform.position, FireTransform.rotation) as Rigidbody2D;
+        GameObject bullet = PhotonNetwork.Instantiate("Bullet_Enemy", FireTransform.position, FireTransform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * FireTransform.right;
         // Record the time
         fire_lastTime = Time.time;
     }
