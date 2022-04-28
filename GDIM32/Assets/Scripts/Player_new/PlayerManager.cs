@@ -11,11 +11,7 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
     private bool enable = true;
     private bool canInteract = true;
     private Vector3 moveInput;
-    public bool Enable
-    {
-        get { return enable; }
-        set { enable = value; }
-    }
+
     void Start()
     {
         OnlineCameraControl cameraControl = this.gameObject.GetComponent<OnlineCameraControl>();
@@ -39,9 +35,7 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log(canInteract);
-        Debug.Log("enable" + enable);       
+    {   
         if (!photonView.IsMine && PhotonNetwork.IsConnected) 
         {
             canInteract = false;
@@ -81,5 +75,12 @@ public class PlayerManager : MonoBehaviourPun, IPunObservable
             // Network player, receive data
             this.stats.CurrentHP = (float)stream.ReceiveNext();
         }
+    }
+
+    [PunRPC] 
+    public void SetActive(bool active)
+    {
+        Debug.Log(1);
+        enable = active;
     }
 }
