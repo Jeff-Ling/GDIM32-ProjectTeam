@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -6,7 +7,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     #region Var: Combat
     [Header("Combat System")]
-    public Rigidbody2D m_bullet;
     public Transform m_FireTransform;
     public float fire_break = 3.0f;
 
@@ -92,7 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
         // m_Fired = true;
 
         Rigidbody2D shellInstance =
-            Instantiate(m_bullet, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody2D;
+            PhotonNetwork.Instantiate("Bullet", m_FireTransform.position, m_FireTransform.rotation).GetComponent<Rigidbody2D>();
 
         // set the velocity
         shellInstance.velocity = stats.bulletSpeed * m_FireTransform.right;

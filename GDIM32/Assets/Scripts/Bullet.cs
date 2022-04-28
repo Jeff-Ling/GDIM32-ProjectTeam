@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 // Author: Jiefu Ling (jieful2); Yurui Leng(yuruil)
 // This script is used to define bullet behaviour
@@ -9,7 +10,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float LifeTime = 2f;
     public float Damage = 30f;
 
     private AudioSource AS;
@@ -23,15 +23,13 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("G");
         }
-
-        Destroy(gameObject, LifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.name == "Shield Collider")
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
 
         if (collision.gameObject.tag != this.tag)
         {
@@ -45,7 +43,7 @@ public class Bullet : MonoBehaviour
 
             if (collision.gameObject.name != "FOV" && !collision.gameObject.name.StartsWith("Bullet"))
             {
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
 

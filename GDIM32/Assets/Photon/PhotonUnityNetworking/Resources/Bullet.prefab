@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fa706924dc0b549adbec0c406777f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeTime: 10
   Damage: 30
   HitOnWall: {fileID: 8300000, guid: 1bf1c57f17f193b4ba57a3566afc71bc, type: 3}
 --- !u!50 &8500833655986505669

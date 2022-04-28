@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
+using Photon.Pun;
 // Author: Jiefu Ling (jieful2); Yuhao Song (yuhaos5)
 // This script is used to calculate player and enemies' health status.
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviourPun, IPunObservable
 {
     public float m_StartingHealth = 100f;
     public Slider m_Slider;
@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public Color m_ZeroHealthColor = Color.red;
 
     private float m_CurrentHealth;
-    private bool m_Dead;
+    private bool m_Dead = false;
 
     // Audio Component
     public AudioSource AS;
@@ -29,24 +29,24 @@ public class PlayerHealth : MonoBehaviour
         SetHealthUI();
     }
 
+    private void Update()
+    {
+        SetHealthUI();
+        if (m_Dead)
+        {
+            int random_clip = Random.Range(0, Death_AudioClip.Length);
+            AS.clip = Death_AudioClip[random_clip];
+            AS.Play();
+            Destroy(this.gameObject);
+        }
+    }
     public void TakeDamage(float damage)
     {
         m_CurrentHealth -= damage;
-
-        SetHealthUI();
-
-
         // When health is under 0 and m_Dead is false
         if (m_CurrentHealth <= 0f && !m_Dead)
         {
             m_Dead = true;
-
-            // Play the clip
-            int random_clip = Random.Range(0, Death_AudioClip.Length);
-            AS.clip = Death_AudioClip[random_clip];
-            AS.Play();
-
-            Destroy(this.gameObject);
         }
     }
 
@@ -57,9 +57,7 @@ public class PlayerHealth : MonoBehaviour
         if (m_CurrentHealth > 100f)
         {
             m_CurrentHealth = 100f;
-        }
-
-        SetHealthUI();
+        }        
     }
 
     private void SetHealthUI()
@@ -70,5 +68,21 @@ public class PlayerHealth : MonoBehaviour
 
         // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
         m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(m_CurrentHealth);
+            stream.SendNext(m_Dead);
+        }
+        else
+        {
+            // Network player, receive data
+            this.m_CurrentHealth = (float)stream.ReceiveNext();
+            this.m_Dead =  (bool)stream.ReceiveNext();
+        }
     }
 }

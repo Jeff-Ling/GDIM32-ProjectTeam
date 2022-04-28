@@ -401,7 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65257fe816f3b3468482a41ecb1e522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bullet: {fileID: 8500833655986505669, guid: 3e4a89ba583f0d54489feadaba27dd33, type: 3}
   m_FireTransform: {fileID: 3969325929596666054}
   fire_break: 3
   currentFacing: {fileID: 3969325930066142696}

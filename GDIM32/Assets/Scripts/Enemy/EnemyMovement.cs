@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 // Author: Jiefu Ling (jieful2), Xiao Jing (xjing2), Liujiahao Xie(liujiahx), Yurui Leng(yuruil), Yuhao Song (yuhaos5)
 // This script is used to control enemy movement.
@@ -9,7 +10,7 @@ using UnityEngine;
 // We use Finite State Machine to build our AI.
 // State: IDLE, PATROL, SHOOTING, CHASE
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviourPun, IPunObservable
 {
     public float Speed = 12f;
     public float TurnSpeed = 180f;
@@ -187,5 +188,17 @@ public class EnemyMovement : MonoBehaviour
     {
         chase_lastTime = t;
     }
-
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(state);
+        }
+        else
+        {
+            // Network player, receive data
+            this.state = (EnemyMovement.Status)stream.ReceiveNext();
+        }
+    }
 }
